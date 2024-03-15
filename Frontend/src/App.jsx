@@ -3,6 +3,7 @@ import Dashboard from './pages/Dashboard';
 import EquiposTemplate from './components/templates/EquiposTemplate';
 import CategoriasTemplate from './components/templates/CategoriasTemplate';
 import UbicacionesTemplate from './components/templates/UbicacionesTemplate';
+import PruebasTemplate from './components/templates/PruebasTemplate';
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
       <Route path='/equipos' element={<EquiposTemplate/>}/>
       <Route path='/categorias' element={<CategoriasTemplate/>}/>
       <Route path='/ubicaciones' element={<UbicacionesTemplate/>}/>
+      <Route path='/pruebas' element={<PruebasTemplate/>}/>
     </Routes>
     </BrowserRouter>
      

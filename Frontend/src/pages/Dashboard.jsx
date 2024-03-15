@@ -14,6 +14,9 @@ function Dashboard() {
       <Link to={'/ubicaciones'}>
         <button className='font-bold bg-blue-500 p-2 text-white'>UBICACIONES</button>
       </Link>
+      <Link to={'/pruebas'}>
+        <button className='font-bold bg-blue-500 p-2 text-white'>PRUEBAS</button>
+      </Link>
       </div>
       
     </>
