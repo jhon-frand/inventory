@@ -1,22 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import NavBar from '../components/organismos/NavBar'
+import SideBar from '../components/organismos/SideBar'
 
 function Dashboard() {
   return (
     <>
-      <div className='font-bold flex gap-3'>
-      <Link to={'/equipos'}>
-        <button className='font-bold bg-blue-500 p-2 text-white'>EQUIPOS</button>
-      </Link>
-      <Link to={'/categorias'}>
-        <button className='font-bold bg-blue-500 p-2 text-white'>CATEGORIAS</button>
-      </Link>
-      <Link to={'/ubicaciones'}>
-        <button className='font-bold bg-blue-500 p-2 text-white'>UBICACIONES</button>
-      </Link>
-      <Link to={'/pruebas'}>
-        <button className='font-bold bg-blue-500 p-2 text-white'>PRUEBAS</button>
-      </Link>
+      <div className='bg-red-300 flex flex-col w-full h-screen'>
+     <NavBar/>
+     <SideBar/>
       </div>
       
     </>

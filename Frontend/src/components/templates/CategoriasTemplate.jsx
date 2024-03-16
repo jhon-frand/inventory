@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
+import SideBar from "../organismos/SideBar";
+import NavBar from "../organismos/NavBar";
 
 function CategoriasTemplate() {
 
@@ -18,7 +20,8 @@ function CategoriasTemplate() {
     useEffect(()=>{
         getCategorias();
     }, []);
-
+    //traer datos por ID
+    const getCategory = () => {};
     //Modal Registro
     const [isOpen, setIsOpen] = useState(false);
     //valores para el registro
@@ -81,15 +84,28 @@ function CategoriasTemplate() {
     // };
   return (
     <>
-    <div className="flex flex-col justify-center items-center h-screen gap-5">
-    <div className="flex gap-2">
+   <div className="relative">
+    <div className="absolute top-0 left-0 right-0 z-50">
+        <NavBar></NavBar>
+    </div>
+   <div className="flex">
+   <div>
+    <SideBar></SideBar>
+    </div>
+    <div className="flex gap-3 w-full  bg-gray-200 justify-center items-center ">
+    <div className="flex flex-col w-full  p-3 pt-24 h-screen">
+    <div className="flex gap-2 justify-around b w-full p-3">
+                <div className="flex gap-2 ">
                 <input type="search" className="border border-gray-300" placeholder="Buscar categoría por ID" />
                 <button className="bg-blue-500 text-white font-semibold p-1 rounded-lg">BUSCAR</button>
-            </div>
-        <div>
-        <button className='bg-blue-500 text-white rounded-md p-1'
+                </div>
+                <button className='bg-blue-500 text-white rounded-md p-1'
     onClick={()=>setIsOpen(true)}
     >REGISTRAR CATEGORÍA</button>
+            </div>
+            
+        <div>
+        
 
    {
     //si isOpen es igual a true
@@ -138,23 +154,23 @@ function CategoriasTemplate() {
     )
    }
         </div>
-        <div>
-            <table>
+        <div className="w-full flex justify-center ">
+            <table className="w-full bg-white rounded-xl">
                 <thead> 
-                    <tr className='bg-gray-500'>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>ACTIONS</th>
+                    <tr className='bg-gray-400'>
+                        <th className="p-2">ID</th>
+                        <th className="p-2">NOMBRE</th>
+                        <th className="p-2">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         categorias.map((categoria) => (
                             <tr key={categoria.id_categoria} className='border-b'>
-                                <th>{categoria.id_categoria}</th>
-                                <th>{categoria.nombre_categoria}</th>
-                                <th>
-                                <button className='bg-blue-500 text-white rounded-md'
+                                <th className="p-1">{categoria.id_categoria}</th>
+                                <th className="p-1">{categoria.nombre_categoria}</th>
+                                <th className="p-1">
+                                <button className='bg-blue-800 p-1 text-white rounded-md'
                                 onClick={()=>{
                                     setSelectId(categoria.id_categoria);
                                     setIsOpenUpdate(true);
@@ -168,6 +184,9 @@ function CategoriasTemplate() {
             </table>
         </div>
     </div>
+    </div>
+   </div>
+   </div>
     </>
   )
 }

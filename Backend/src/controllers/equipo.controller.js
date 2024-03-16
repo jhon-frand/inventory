@@ -2,9 +2,8 @@ import { pool } from "../database/database.js";
 
 const postEquipo = async (peticion, respuesta) => {
     try {
-        const connection = await pool.getConnection();
         const equipo = peticion.body;
-        const sql = await connection.query("INSERT INTO equipos SET ?", equipo);
+        const sql = await pool.query("INSERT INTO equipos SET ?", equipo);
         respuesta.json({message:"Equipo Registrado", equipment: sql})
     } catch (error) {
         respuesta.status(500);
@@ -14,10 +13,9 @@ const postEquipo = async (peticion, respuesta) => {
 
 const putEquipo = async (peticion, respuesta) => {
     try {
-        const connection = await pool.getConnection();
         const {id} = peticion.params;
         const equipo = peticion.body;
-        const sql = await connection.query("UPDATE equipos SET ? WHERE id_equipo = ?", [equipo, id]);
+        const sql = await pool.query("UPDATE equipos SET ? WHERE id_equipo = ?", [equipo, id]);
         respuesta.json({message:"Equipo Actualizado", equipment: sql})
     } catch (error) {
         respuesta.status(500);
@@ -27,9 +25,8 @@ const putEquipo = async (peticion, respuesta) => {
 
 const getEquipo = async (peticion, respuesta) => {
     try {
-        const connection = await pool.getConnection();
         const {id} = peticion.params;
-        const [sql] = await connection.query(`
+        const [sql] = await pool.query(`
                                             SELECT equipos.*,
                                             categorias.nombre_categoria,
                                             ubicaciones.ambiente,
@@ -49,8 +46,7 @@ const getEquipo = async (peticion, respuesta) => {
 
 const getEquipos = async (peticion, respuesta) => {
     try {
-        const connection = await pool.getConnection();
-        const [sql] = await connection.query(`
+        const [sql] = await pool.query(`
                                             SELECT equipos.*,
                                             categorias.nombre_categoria,
                                             ubicaciones.ambiente,
