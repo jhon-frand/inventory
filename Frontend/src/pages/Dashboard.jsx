@@ -6,10 +6,17 @@ import SideBar from '../components/organismos/SideBar'
 function Dashboard() {
   return (
     <>
-      <div className='bg-red-300 flex flex-col w-full h-screen'>
-     <NavBar/>
-     <SideBar/>
-      </div>
+       <div className="relative">
+    <div className="absolute top-0 left-0 right-0 z-50">
+        <NavBar></NavBar>
+    </div>
+   <div className="flex">
+   <div>
+    <SideBar></SideBar>
+    </div>
+  
+   </div>
+   </div>
       
     </>
   )

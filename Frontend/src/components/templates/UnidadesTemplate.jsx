@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import NavBar from '../organismos/NavBar';
 import SideBar from '../organismos/SideBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function UnidadesTemplate() {
 
@@ -89,6 +91,11 @@ function UnidadesTemplate() {
         setSelectId(unidad.id_unidad);
         setIsOpenUpdate(true);
       };
+
+      const limpiarFormulario = () => {
+        limpiarForm();
+        setSelectId(null);
+      };
   return (
     <>
     <div className="relative">
@@ -99,14 +106,17 @@ function UnidadesTemplate() {
    <div>
     <SideBar></SideBar>
     </div>
-    <div className="flex gap-3 w-full  bg-gray-200 justify-center items-center ">
+    <div className="flex gap-3 w-full justify-center items-center ">
     <div className="flex flex-col w-full  p-3 pt-24 h-screen">
-    <div className="flex gap-2 justify-around b w-full p-3">
-                <div className="flex gap-2 ">
-                <input type="search" className="border border-gray-300" placeholder="Buscar unidad por ID" />
-                <button className="bg-blue-500 text-white font-semibold p-1 rounded-lg">BUSCAR</button>
+    <div className="flex gap-2 justify-between w-full p-3 mt-5 mb-5">
+                <div className="flex gap-2 justify-between items-center p-2">
+                    <h2 className="font-medium">UNIDADES PRODUCTIVAS</h2>
                 </div>
-                <button className='bg-blue-500 text-white rounded-md p-1'
+                <div className="p-1 flex bg-gray-300 justify-between items-center rounded-md w-1/2">
+                <input type="search" className="border p-1 rounded-lg bg-gray-300 outline-none border-gray-300" placeholder="Buscar categoría por ID" />
+                <FontAwesomeIcon icon={faSearch} className="text-2xl text-gray-500" />
+                    </div>
+                <button className='bg-greenSena font-semibold text-white rounded-md p-1'
     onClick={()=>setIsOpen(true)}
     >REGISTRAR UNIDAD</button>
             </div>
@@ -127,7 +137,8 @@ function UnidadesTemplate() {
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => {setIsOpen(false);
+                        limpiarFormulario();}}
                     >CANCELAR</button>
                     <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">REGISTRAR</button>
                 </div>
@@ -150,7 +161,8 @@ function UnidadesTemplate() {
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
-                        onClick={() => setIsOpenUpdate(false)}
+                        onClick={() => {setIsOpenUpdate(false);
+                        limpiarFormulario();}}
                     >CANCELAR</button>
                     <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">ACTUALIZAR</button>
                 </div>
@@ -162,22 +174,22 @@ function UnidadesTemplate() {
    }
         </div>
         <div className="w-full flex justify-center ">
-            <table className="w-full bg-white rounded-xl">
+            <table className="w-full bg-white rounded-xl shadow-lg">
                 <thead> 
-                    <tr className='bg-gray-400'>
-                        <th className="p-2">ID</th>
-                        <th className="p-2">UNIDAD  PRODUCTIVA</th>
-                        <th className="p-2">ACTIONS</th>
+                    <tr className='bg-gray-300'>
+                        <th className="p-2 font-medium">ID</th>
+                        <th className="p-2 font-medium">UNIDAD  PRODUCTIVA</th>
+                        <th className="p-2 font-medium">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         unidades.map((unidad) => (
                             <tr key={unidad.id_unidad} className='border-b'>
-                                <th className="p-1">{unidad.id_unidad}</th>
-                                <th className="p-1">{unidad.nombre_unidad}</th>
-                                <th className="p-1">
-                                <button className='bg-blue-800 p-1 text-white rounded-md'
+                                <th className="p-1 font-normal">{unidad.id_unidad}</th>
+                                <th className="p-1 font-normal">{unidad.nombre_unidad}</th>
+                                <th className="p-1 font-normal">
+                                <button className='bg-blue-500 w-20 p-1 text-white rounded-md'
                                 onClick={()=>{   
                                  editUnidad(unidad);
                                 }}
