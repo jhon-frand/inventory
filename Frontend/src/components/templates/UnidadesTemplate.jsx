@@ -1,32 +1,33 @@
-import axios from "axios"
-import { useEffect, useState } from "react";
-import SideBar from "../organismos/SideBar";
-import NavBar from "../organismos/NavBar";
+import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import NavBar from '../organismos/NavBar';
+import SideBar from '../organismos/SideBar';
 
-function CategoriasTemplate() {
+function UnidadesTemplate() {
 
-    const endpoint = 'http://localhost:3000/categorias';
-    const [categorias, setCategorias] = useState([]);
+    const endpoint = 'http://localhost:3000/unidades';
+    const [unidades, setUnidades] = useState([]);
     //listar categorias
-    const getCategorias = async () => {
+    const getUnidades = async () => {
         try {
             const respuesta = await axios.get(`${endpoint}`);
-            setCategorias(respuesta.data);
+            setUnidades(respuesta.data);
         } catch (error) {
-            console.log("error al listar categorias", error);
+            console.log("error al listar unidades", error);
         }
     };
 
     useEffect(()=>{
-        getCategorias();
+        getUnidades();
     }, []);
     
-
+   
     //Modal Registro
     const [isOpen, setIsOpen] = useState(false);
     //valores para el registro
     const [value, setValue] = useState({
-        nombre_categoria: ""
+        nombre_unidad: ""
     });
     const valorInput = (event) => {
         setValue({
@@ -34,13 +35,14 @@ function CategoriasTemplate() {
             [event.target.name]: event.target.value
         })
     };
+
     const limpiarForm = ()  => {
         setValue({
-            nombre_categoria: ""
+            nombre_unidad: ""
         })
     };
     //función POST
-    const postCategoria = async (event) => {
+    const postUnidad = async (event) => {
         event.preventDefault();
         try {
             const respuesta = await axios.post(endpoint, value);
@@ -49,7 +51,7 @@ function CategoriasTemplate() {
                 limpiarForm();
             }
             setIsOpen(false);
-            getCategorias();
+            getUnidades();
         } catch (error) {
             console.log("error al registrar", error);
         }
@@ -65,7 +67,7 @@ function CategoriasTemplate() {
             [event.target.name]: event.target.value
         }))
     };
-    const putCategoria = async (event) => {
+    const putUnidad = async (event) => {
         event.preventDefault();
         try {
             const respuesta = await axios.put(`${endpoint}/${selectID}`, value);
@@ -74,32 +76,22 @@ function CategoriasTemplate() {
                 limpiarForm();
             }
             setIsOpenUpdate(false);
-            getCategorias();
+            getUnidades();
         } catch (error) {
             console.log("error al actualizar", error);
         }
     };
     //traer datos por ID
-    const editCategoria = (categoria) => {
+    const editUnidad = (unidad) => {
         setValue({
-          nombre_categoria: categoria.nombre_categoria,
+          nombre_unidad: unidad.nombre_unidad,
         });
-        setSelectId(categoria.id_categoria);
+        setSelectId(unidad.id_unidad);
         setIsOpenUpdate(true);
       };
-
-    //buscar categoria
-    // const getCategoria = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         const respuesta = await axios.get();
-    //     } catch (error) {
-    //         console.log("error al buscar categoría", error);
-    //     }
-    // };
   return (
     <>
-   <div className="relative">
+    <div className="relative">
     <div className="absolute top-0 left-0 right-0 z-50">
         <NavBar></NavBar>
     </div>
@@ -111,12 +103,12 @@ function CategoriasTemplate() {
     <div className="flex flex-col w-full  p-3 pt-24 h-screen">
     <div className="flex gap-2 justify-around b w-full p-3">
                 <div className="flex gap-2 ">
-                <input type="search" className="border border-gray-300" placeholder="Buscar categoría por ID" />
+                <input type="search" className="border border-gray-300" placeholder="Buscar unidad por ID" />
                 <button className="bg-blue-500 text-white font-semibold p-1 rounded-lg">BUSCAR</button>
                 </div>
                 <button className='bg-blue-500 text-white rounded-md p-1'
     onClick={()=>setIsOpen(true)}
-    >REGISTRAR CATEGORÍA</button>
+    >REGISTRAR UNIDAD</button>
             </div>
             
         <div>
@@ -125,12 +117,12 @@ function CategoriasTemplate() {
    {
     //si isOpen es igual a true
     isOpen && (
-        <form onSubmit={postCategoria}>
+        <form onSubmit={postUnidad}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
                 <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Nombre Categoría:</label>
-                    <input value={value.nombre_categoria} onChange={valorInput} name="nombre_categoria"
+                    <label className='font-bold'>Nombre Unidad:</label>
+                    <input value={value.nombre_unidad} onChange={valorInput} name="nombre_unidad"
                         className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
@@ -148,12 +140,12 @@ function CategoriasTemplate() {
    {
     //si isOpen es igual a true
     isOpenUpdate && (
-        <form onSubmit={putCategoria}>
+        <form onSubmit={putUnidad}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
                 <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Nombre Categoría:</label>
-                    <input value={value.nombre_categoria} onChange={editValorInput} name="nombre_categoria"
+                    <label className='font-bold'>Nombre Unidad:</label>
+                    <input value={value.nombre_unidad} onChange={editValorInput} name="nombre_unidad"
                         className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
@@ -174,20 +166,20 @@ function CategoriasTemplate() {
                 <thead> 
                     <tr className='bg-gray-400'>
                         <th className="p-2">ID</th>
-                        <th className="p-2">NOMBRE</th>
+                        <th className="p-2">UNIDAD  PRODUCTIVA</th>
                         <th className="p-2">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        categorias.map((categoria) => (
-                            <tr key={categoria.id_categoria} className='border-b'>
-                                <th className="p-1">{categoria.id_categoria}</th>
-                                <th className="p-1">{categoria.nombre_categoria}</th>
+                        unidades.map((unidad) => (
+                            <tr key={unidad.id_unidad} className='border-b'>
+                                <th className="p-1">{unidad.id_unidad}</th>
+                                <th className="p-1">{unidad.nombre_unidad}</th>
                                 <th className="p-1">
                                 <button className='bg-blue-800 p-1 text-white rounded-md'
                                 onClick={()=>{   
-                                 editCategoria(categoria);
+                                 editUnidad(unidad);
                                 }}
                                   >EDIT</button>
                                 </th>
@@ -205,4 +197,4 @@ function CategoriasTemplate() {
   )
 }
 
-export default CategoriasTemplate
+export default UnidadesTemplate

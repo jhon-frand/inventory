@@ -45,12 +45,20 @@ function UbicacionesTemplate() {
             [event.target.name]: event.target.value
         })
     };
+    const limpiarForm = ()  => {
+        setValue({
+            fk_unidad_productiva: "",
+            ambiente: "",
+            sitio: ""
+        })
+    };
     const postUbicacion = async (event) => {
         event.preventDefault();
         try {
             const respuesta = await axios.post(endpoint, value);
             if (respuesta.status === 200) {
                 alert(respuesta.data.message);
+                limpiarForm();
             }
             setIsOpen(false);
             getUbicaciones();
@@ -75,6 +83,7 @@ function UbicacionesTemplate() {
             const respuesta = await axios.put(`${endpoint}/${selectID}`, value);
             if (respuesta.status === 200) {
                 alert(respuesta.data.message);
+                limpiarForm();
             }
             setIsOpenUpdate(false);
             getUbicaciones();
@@ -83,6 +92,16 @@ function UbicacionesTemplate() {
         }
     };
 
+    //traer datos en el formulario
+    const getDatosForm  = (ubicacion) => {
+        setValue({
+            fk_unidad_productiva: ubicacion.fk_unidad_productiva,
+            ambiente: ubicacion.ambiente,
+            sitio: ubicacion.sitio
+        });
+        setSelectId(ubicacion.id_ubicacion);
+        setIsOpenUpdate(true);
+    };
 
     return (
     <>
@@ -212,8 +231,7 @@ function UbicacionesTemplate() {
                                 <th className="p-1">
                                 <button className='bg-blue-800 p-1 text-white rounded-md'
                                 onClick={()=>{
-                                    setSelectId(ubicacion.id_ubicacion);
-                                    setIsOpenUpdate(true);
+                                   getDatosForm(ubicacion);
                                 }}
                                   >EDIT</button>
                                 </th>

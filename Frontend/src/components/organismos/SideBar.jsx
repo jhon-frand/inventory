@@ -15,6 +15,11 @@ function SideBar() {
           </Link>
           </div>
         <div className='hover:bg-white p-2 border-b cursor-pointer border-green-300 text-center font-semibold text-white hover:text-black'>
+          <Link to={'/unidades'}>
+          UNIDADES PRODUCTIVAS
+          </Link>
+          </div>
+        <div className='hover:bg-white p-2 border-b cursor-pointer border-green-300 text-center font-semibold text-white hover:text-black'>
         <Link to={'/equipos'}>
           EQUIPOS
           </Link>

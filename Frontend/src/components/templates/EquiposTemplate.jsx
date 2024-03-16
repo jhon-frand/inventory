@@ -67,6 +67,20 @@ function EquiposTemplate() {
             [event.target.name]: event.target.value
         })
     };
+    const limpiarForm = ()  => {
+        setValue({
+            serial: "",
+            nombre_equipo: "",
+            marca_equipo: "",
+            modelo_equipo: "",
+            fecha_ingreso: "",
+            descripcion: "",
+            tipo_equipo: "",
+            estado: "",
+            fk_categoria: "",
+            fk_ubicacion: ""
+        })
+    };
     //post Equipo
     const postEquipo = async (event) => {
         event.preventDefault();
@@ -74,6 +88,7 @@ function EquiposTemplate() {
             const respuesta = await axios.post(endpoint, value);
             if (respuesta.status === 200) {
                 alert(respuesta.data.message);
+                limpiarForm();
             }
             setIsOpen(false);
             showEquipos();
@@ -97,12 +112,31 @@ function EquiposTemplate() {
             const respuesta = await axios.put(`${endpoint}/${selectID}`, value);
             if (respuesta.status === 200) {
                 alert(respuesta.data.message);
+                limpiarForm();
             }
             setIsOpenUpdate(false);
             showEquipos();
         } catch (error) {
             console.log("error al actualizar", error);
         }
+    };
+
+    //traer datos al formulario
+    const getDatosForm = (equipo) => {
+        setValue({
+            serial: equipo.serial,
+            nombre_equipo: equipo.nombre_equipo,
+            marca_equipo: equipo.marca_equipo,
+            modelo_equipo: equipo.modelo_equipo,
+            fecha_ingreso: equipo.fecha_ingreso,
+            descripcion: equipo.descripcion,
+            tipo_equipo: equipo.tipo_equipo,
+            estado: equipo.estado,
+            fk_categoria: equipo.fk_categoria,
+            fk_ubicacion: equipo.fk_ubicacion
+        });
+        setSelectId(equipo.id_equipo);
+        setIsOpenUpdate(true);
     };
   return (
     <>
@@ -288,7 +322,7 @@ function EquiposTemplate() {
 
                 <div className='flex justify-center items-center gap-2'>
                     <label className='font-bold'>Ubicación:</label>
-                    <select value={value.fk_ubicacion} onChange={editValorInput} name="fk_ubicacion" className='border-gray-400 border rounded-sm p-1' required>
+                    <select value={value.fk_ubicacion} onChange={editValorInput} name="fk_ubicacion" className='border-gray-400 border rounded-sm p-1' required >
         <option value="">Seleccione una Ubicación</option>
         {ubicaciones.map(ubicacion => (
             <option key={ubicacion.id_ubicacion} value={ubicacion.id_ubicacion}>
@@ -345,8 +379,7 @@ function EquiposTemplate() {
                                 <th className="p-1">
                                 <button className='bg-blue-800 p-1 text-white rounded-md'
                                 onClick={()=>{
-                                    setSelectId(equipo.id_equipo);
-                                    setIsOpenUpdate(true);
+                                    getDatosForm(equipo);
                                 }}
                                   >EDIT</button>
                                 </th>
