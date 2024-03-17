@@ -19,7 +19,7 @@ function Dashboard() {
    <div className='flex flex-col w-full  pt-24'>
       <div className='flex items-center justify-around'>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
-         <Link  className='flex flex-col justify-center items-center'>
+         <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
           <p className='text-white'>USUARIOS</p>
           <p className='text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
@@ -33,14 +33,14 @@ function Dashboard() {
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
-         <Link className='flex flex-col justify-center items-center'>
+         <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
           <p className='text-white text-center'>MANTENIMIENTOS TÉCNICOS</p>
           <p className='text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className=" text-white"/>
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
-         <Link className='flex flex-col justify-center items-center'>
+         <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
           <p className='text-center text-white'>MANTENIIENTOS PREVENTIVOS</p>
           <p className=' text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
