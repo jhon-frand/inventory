@@ -48,6 +48,8 @@ function Dashboard() {
         </div>
       </div>
 
+
+
       <div className='flex flex-col gap-3 justify-around'>
         <div className=' pl-12 pt-8'>
           <h2 className='font-bold border-b pb-2'>TOTAL DE EQUIPOS POR UNIDAD PRODUCTIVA</h2>
@@ -55,28 +57,30 @@ function Dashboard() {
        <div className='flex justify-around'>
        <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
          <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
-          <p className='text-white'>AGROINDUSTRIA</p>
-          <p className='text-white'>5</p>
+          
+          <p className='text-white'>USUARIOS</p>
+          <p className='text-white'>45</p>
+          
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
          <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
-          <p className='text-white'>ESCUELA DEL CAFÉ</p>
+          <p className='text-white'>EQUIPOS</p>
           <p className=' text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
          <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
-          <p className='text-white text-center'> GASTRONOMÍA</p>
+          <p className='text-white text-center'>MANTENIMIENTOS TÉCNICOS</p>
           <p className='text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className=" text-white"/>
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
          <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
-          <p className='text-center text-white'>TICS</p>
+          <p className='text-center text-white'>MANTENIIENTOS PREVENTIVOS</p>
           <p className=' text-white'>45</p>
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
          </Link>
