@@ -10,11 +10,14 @@ function CategoriasTemplate() {
 
     const endpoint = 'http://localhost:3000/categorias';
     const [categorias, setCategorias] = useState([]);
+
+  
     //listar categorias
     const getCategorias = async () => {
         try {
             const respuesta = await axios.get(`${endpoint}`);
             setCategorias(respuesta.data);
+            
         } catch (error) {
             console.log("error al listar categorias", error);
         }
@@ -96,15 +99,23 @@ function CategoriasTemplate() {
         setSelectId(null);
       };
 
-    //buscar categoria
-    // const getCategoria = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         const respuesta = await axios.get();
-    //     } catch (error) {
-    //         console.log("error al buscar categoría", error);
-    //     }
-    // };
+      //buscar categoría por ID
+      const [searchId, setSearchId] = useState("");
+      const handleChange = (event) => {
+        setSearchId(event.target.value);
+      };
+      const handleSearch = () => {
+        getCategoriaById(searchId);
+      };
+   
+      const getCategoriaById = async () => {
+        try {
+            const respuesta = await axios.get(`${endpoint}/${searchId}`);
+           console.log(respuesta);
+        } catch (error) {
+            console.log("error al buscar categoría", error);
+        }
+      };
   return (
     <>
    <div className="relative">
@@ -122,10 +133,13 @@ function CategoriasTemplate() {
                     <h2 className="font-medium">CATEGORÍAS</h2>
                 </div>
                 <div className="p-1 flex bg-gray-300 justify-between items-center rounded-md w-1/2">
-                <input type="search" className="border p-1 rounded-lg bg-gray-300 outline-none border-gray-300" placeholder="Buscar categoría por ID" />
-                <FontAwesomeIcon icon={faSearch} className="text-2xl text-gray-500" />
+                <input type="search"  value={searchId} onChange={handleChange} 
+                 className="border p-1 rounded-lg bg-gray-300 outline-none border-gray-300" placeholder="Buscar categoría por ID" />
+               <FontAwesomeIcon icon={faSearch} onClick={handleSearch}   className="text-2xl text-gray-500" />
+            
                     </div>
-                <button className='bg-greenSena font-semibold text-white rounded-md p-1'
+                <button 
+                className='bg-greenSena font-semibold text-white rounded-md p-2'
     onClick={()=>setIsOpen(true)}
     >REGISTRAR CATEGORÍA</button>
             </div>
@@ -138,11 +152,15 @@ function CategoriasTemplate() {
     isOpen && (
         <form onSubmit={postCategoria}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
+           
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
+            <div className="flex w-full border-b-2">
+                <h2 className="p-1 font-semibold">REGISTRAR NUEVA CATEGORÍA</h2>
+            </div>
                 <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Nombre Categoría:</label>
+                    <label className='font-medium'>Nombre Categoría:</label>
                     <input value={value.nombre_categoria} onChange={valorInput} name="nombre_categoria"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
+                        className='border-gray-400 border outline-none rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
@@ -163,10 +181,13 @@ function CategoriasTemplate() {
         <form onSubmit={putCategoria}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
+            <div className="flex w-full border-b-2">
+                <h2 className="p-1 font-semibold">EDITAR DATOS DE CATEGORÍA</h2>
+            </div>
                 <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Nombre Categoría:</label>
+                    <label className='font-medium'>Nombre Categoría:</label>
                     <input value={value.nombre_categoria} onChange={editValorInput} name="nombre_categoria"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
+                        className='border-gray-400 border outline-none rounded-sm p-1' type="text" placeholder="Ingresa el Nombre" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
@@ -182,13 +203,13 @@ function CategoriasTemplate() {
     )
    }
         </div>
-        <div className="w-full flex justify-center ">
+        <div className="w-full flex justify-center pr-3 pl-3 ">
             <table className="w-full bg-white rounded-xl shadow-lg">
                 <thead> 
                     <tr className='bg-gray-300'>
-                        <th className="p-2 font-medium">ID</th>
-                        <th className="p-2 font-medium">NOMBRE</th>
-                        <th className="p-2 font-medium">ACTIONS</th>
+                        <th className="p-2 font-medium text-sm">ID</th>
+                        <th className="p-2 font-medium text-sm">NOMBRE</th>
+                        <th className="p-2 font-medium text-sm">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>

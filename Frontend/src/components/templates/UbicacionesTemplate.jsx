@@ -130,9 +130,9 @@ function UbicacionesTemplate() {
                 <input type="search" className="border p-1 rounded-lg bg-gray-300 outline-none border-gray-300" placeholder="Buscar categoría por ID" />
                 <FontAwesomeIcon icon={faSearch} className="text-2xl text-gray-500" />
                     </div>
-                <button className='bg-greenSena font-semibold text-white rounded-md p-1'
+                <button className='bg-greenSena font-semibold text-white rounded-md p-2'
     onClick={()=>setIsOpen(true)}
-    >REGISTRAR UBICACIONES</button>
+    >REGISTRAR UBICACIÓN</button>
             </div>
             
         <div>
@@ -144,8 +144,11 @@ function UbicacionesTemplate() {
         <form onSubmit={postUbicacion}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
+            <div className="flex w-full border-b-2">
+                <h2 className="p-1 font-semibold">REGISTRAR NUEVA UBICACIÓN</h2>
+            </div>
                 <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Unidad Productiva:</label>
+                    <label className='font-medium'>Unidad Productiva:</label>
                     <select value={value.fk_unidad_productiva} onChange={valorInput} name="fk_unidad_productiva"
                         className='border-gray-400 border rounded-sm p-1' type="text" placeholder="I" required >
                             <option value="">Selecciona Unidad Productiva</option>
@@ -156,15 +159,15 @@ function UbicacionesTemplate() {
                             }
                             </select>
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Ambiente:</label>
+                <div className='flex items-center justify-between gap-2 w-full'>
+                    <label className='font-medium '>Ambiente:</label>
                     <input value={value.ambiente} onChange={valorInput} name="ambiente"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el nombre del ambiente" required />
+                        className='border-gray-400 border w-60  rounded-sm p-1' type="text" placeholder="Ingresa el nombre del ambiente" required />
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Sitio:</label>
+                <div className='flex justify-between w-full items-center gap-2'>
+                    <label className='font-medium'>Sitio:</label>
                     <input value={value.sitio} onChange={valorInput} name="sitio"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre del sitio" required />
+                        className='border-gray-400 border w-60 rounded-sm p-1' type="text" placeholder="Ingresa el Nombre del sitio" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
@@ -186,8 +189,11 @@ function UbicacionesTemplate() {
         <form onSubmit={putUbicacion}>
         <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
+            <div className="flex w-full border-b-2">
+                <h2 className="p-1 font-semibold">EDITAR DATOS DE UBICACIÓN</h2>
+            </div>
             <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Unidad Productiva:</label>
+                    <label className='font-medium'>Unidad Productiva:</label>
                     <select value={value.fk_unidad_productiva} onChange={editValorInput} name="fk_unidad_productiva"
                         className='border-gray-400 border rounded-sm p-1' type="text" placeholder="I" required >
                             <option value="">Selecciona Unidad Productiva</option>
@@ -198,15 +204,15 @@ function UbicacionesTemplate() {
                             }
                             </select>
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Ambiente:</label>
+                <div className='flex justify-between w-full items-center gap-2'>
+                    <label className='font-medium'>Ambiente:</label>
                     <input value={value.ambiente} onChange={editValorInput} name="ambiente"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el nombre del ambiente" required />
+                        className='border-gray-400 border w-60 rounded-sm p-1' type="text" placeholder="Ingresa el nombre del ambiente" required />
                 </div>
-                <div className='flex justify-center items-center gap-2'>
-                    <label className='font-bold'>Sitio:</label>
+                <div className='flex justify-between w-full items-center gap-2'>
+                    <label className='font-medium'>Sitio:</label>
                     <input value={value.sitio} onChange={editValorInput} name="sitio"
-                        className='border-gray-400 border rounded-sm p-1' type="text" placeholder="Ingresa el Nombre del sitio" required />
+                        className='border-gray-400 border w-60 rounded-sm p-1' type="text" placeholder="Ingresa el Nombre del sitio" required />
                 </div>
                 <div className='flex justify-center items-center gap-2 font-bold'>
                     <button type="button" className='bg-red-500 p-2 hover:bg-red-700 text-white rounded-md'
@@ -222,15 +228,15 @@ function UbicacionesTemplate() {
     )
    }
         </div>
-        <div className="w-full flex justify-center ">
+        <div className="w-full flex justify-center pl-3 pr-3 ">
             <table className="w-full bg-white rounded-xl shadow-lg">
                 <thead> 
                     <tr className='bg-gray-300'>
-                        <th className="p-2 font-medium">ID</th>
-                        <th className="p-2 font-medium">UNIDAD PRODUCTIVA</th>
-                        <th className="p-2 font-medium">AMBIENTE</th>
-                        <th className="p-2 font-medium">SITIO</th>
-                        <th className="p-2 font-medium">ACTIONS</th>
+                        <th className="p-2 font-medium text-sm">ID</th>
+                        <th className="p-2 font-medium text-sm">UNIDAD PRODUCTIVA</th>
+                        <th className="p-2 font-medium text-sm">AMBIENTE</th>
+                        <th className="p-2 font-medium text-sm">SITIO</th>
+                        <th className="p-2 font-medium text-sm">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
