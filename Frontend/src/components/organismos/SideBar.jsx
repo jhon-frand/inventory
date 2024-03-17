@@ -38,7 +38,7 @@ function SideBar() {
           </Link>
         </div>
         <div className='hover:bg-white p-2 border-b cursor-pointer border-gray-300 text-center font-semibold text-white hover:text-black'>
-        <Link to={'/ubicaciones'} className='flex gap-2 justify-center items-center'>
+        <Link to={'/usuarios'} className='flex gap-2 justify-center items-center'>
         <FontAwesomeIcon icon={faLocationDot} className='text-xl' />
           <h2 className='font-normal text-sm'>ENCARGADOS</h2>
           </Link>
