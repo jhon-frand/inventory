@@ -7,7 +7,7 @@ const postCategoria = async (peticion, respuesta ) => {
         respuesta.json({message:"Categoria Registrada", categoria: sql});
     } catch (error) {
         respuesta.status(500);
-        respuesta.send(error.message);
+        respuesta.json({message: "error al registrar categoría ", error: error});
     }
 };
 
@@ -30,7 +30,8 @@ const getCategoria = async (peticion, respuesta ) => {
         respuesta.json(sql);
     } catch (error) {
         respuesta.status(500);
-        respuesta.send(error.message);
+        respuesta.json({message: "error al buscar categoría ", error: error});
+   
     }
 };
 
@@ -40,7 +41,7 @@ const getCategorias = async (peticion, respuesta ) => {
         respuesta.json(sql);
     } catch (error) {
         respuesta.status(500);
-        respuesta.send(error.message);
+        respuesta.json({message: "error al listar categorías ", error: error});
     }
 };
 

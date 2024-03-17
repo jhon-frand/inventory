@@ -22,6 +22,24 @@ app.use("/ubicaciones", rutasUbicaciones);
 app.use("/categorias", rutasCategorias);
 app.use("/equipos", rutasEquipos);
 
+//documentación
+app.set('view engine', 'ejs');
+app.set('views', './src/views');
+app.use(express.static('./src/public'));
+
+app.get('/docunidades', (req, res) => {
+    res.render('docUnidades.ejs');
+});
+app.get('/category', (req, res) => {
+    res.render('docCategorias.ejs');
+});
+app.get('/ubication', (req, res) => {
+    res.render('docUbicaciones.ejs');
+});
+app.get('/equipment', (req, res) => {
+    res.render('docEquipos.ejs');
+});
+
 app.listen(3000, () => {
     console.log("server on port 3000");
     connectionDb();
