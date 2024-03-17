@@ -8,7 +8,7 @@ import { faToolbox } from '@fortawesome/free-solid-svg-icons'
 function Dashboard() {
   return (
     <>
-       <div className="relative">
+        <div className="relative">
     <div className="absolute top-0 left-0 right-0 z-50">
         <NavBar></NavBar>
     </div>
@@ -46,9 +46,9 @@ function Dashboard() {
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
          </Link>
         </div>
+       
+        
       </div>
-
-
 
       <div className='flex flex-col gap-3 justify-around'>
         <div className=' pl-12 pt-8'>
@@ -57,10 +57,8 @@ function Dashboard() {
        <div className='flex justify-around'>
        <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
          <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
-          
           <p className='text-white'>USUARIOS</p>
           <p className='text-white'>45</p>
-          
           <FontAwesomeIcon icon={faToolbox} className="text-white"/>
          </Link>
         </div>
