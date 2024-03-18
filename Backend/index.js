@@ -1,19 +1,22 @@
-import express, { urlencoded } from "express";
-import bodyParser from "body-parser";
+import express from "express";
+import morgan from "morgan";
 import tecnicos from "./src/routes/tecnicosrouter.js";
 import actividades from "./src/routes/actividadesrouter.js"
 import cors from 'cors';
+import { connectionDb } from "./src/database/database.js";
 
-const servidor = express();
+const app = express();
 
-servidor.use(bodyParser.json());
-servidor.use(urlencoded({extended:true}));
-servidor.use(cors());
+app.use(express.json());
+app.use(morgan("dev"));
+app.use(cors());
 
-servidor.use('/tecnicos', tecnicos);
-servidor.use('/actividades', actividades);
+//RUTAS 
 
+app.use('/tecnicos', tecnicos);
+app.use('/actividades', actividades);
 
-servidor.listen(3000, ()=> {
-    console.log('ALEXANDER_MARTINEZ');
+app.listen(3000, () => {
+    console.log("server on port 3000");
+    connectionDb();
 });
