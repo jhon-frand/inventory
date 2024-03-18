@@ -176,7 +176,7 @@ function EquiposTemplate() {
    // si isOpen es igual a true
     isOpen && (
         <form onSubmit={postEquipo}>
-        <div className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
+        <div className='fixed inset-0 flex bg-black bg-opacity-50 backdrop-blur-sm justify-center items-center'>
             <div className='bg-white p-5  rounded-md flex flex-col justify-center items-center gap-5'>
             <div className="flex w-full border-b-2">
                 <h2 className="p-1 font-semibold">REGISTRAR NUEVO EQUIPO</h2>
