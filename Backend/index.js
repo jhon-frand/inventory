@@ -7,6 +7,7 @@ import rutaUnidadesProductivas from "./src/routes/uni_productivas.routes.js";
 import rutasUbicaciones from "./src/routes/ubicaciones.routes.js";
 import rutasCategorias from "./src/routes/categoria.routes.js";
 import rutasEquipos from "./src/routes/equipo.routes.js";
+import rutasUsuarios from "./src/routes/usuarios.router.js";
 
 const app = express();
 
@@ -17,10 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 //routes
+
 app.use("/unidades", rutaUnidadesProductivas);
 app.use("/ubicaciones", rutasUbicaciones);
 app.use("/categorias", rutasCategorias);
 app.use("/equipos", rutasEquipos);
+app.use("/usuarios", rutasUsuarios);
+
 
 //documentación
 app.set('view engine', 'ejs');

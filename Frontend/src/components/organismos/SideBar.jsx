@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faLocationDot, faScrewdriverWrench, faTag, faToolbox } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faLocationDot, faScrewdriverWrench, faTag, faToolbox, faUser } from '@fortawesome/free-solid-svg-icons'
 
 function SideBar() {
   return (
@@ -35,6 +35,12 @@ function SideBar() {
         <Link to={'/ubicaciones'} className='flex gap-2 justify-center items-center'>
         <FontAwesomeIcon icon={faLocationDot} className='text-xl' />
           <h2 className='font-normal text-sm'>UBICACIONES</h2>
+          </Link>
+        </div>
+        <div className='hover:bg-white p-2 border-b cursor-pointer border-gray-300 text-center font-semibold text-white hover:text-black'>
+        <Link to={'/usuarios'} className='flex gap-2 justify-center items-center'>
+        <FontAwesomeIcon icon={faUser} className='text-xl' />
+          <h2 className='font-normal text-sm'>ENCARGADOS</h2>
           </Link>
         </div>
     </div>
