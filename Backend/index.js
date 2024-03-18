@@ -1,13 +1,10 @@
 import express from "express";
 import morgan from "morgan";
-<<<<<<< HEAD
 import tecnicos from "./src/routes/tecnicosrouter.js";
 import actividades from "./src/routes/actividadesrouter.js"
 import cors from 'cors';
-=======
 import bodyParser from "body-parser";
 import cors from "cors";
->>>>>>> a42d72e795b019f675e0ef10ef1f45bf5af6f728
 import { connectionDb } from "./src/database/database.js";
 import rutaUnidadesProductivas from "./src/routes/uni_productivas.routes.js";
 import rutasUbicaciones from "./src/routes/ubicaciones.routes.js";
