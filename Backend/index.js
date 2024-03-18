@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
-//RUTAS 
+//RUTAS ALEXANDER
 
 app.use('/tecnicos', tecnicos);
 app.use('/actividades', actividades);
