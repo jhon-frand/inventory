@@ -210,20 +210,20 @@ function EquiposTemplate() {
                 </div>
                 
               </div>
-             <div className='flex flex-col gap-3'>
-             <div className='flex justify-between items-center gap-2'>
+             <div className='flex flex-col gap-3 w-[400px]'>
+             <div className='flex justify-between items-center gap-2 '>
                     <label className='font-medium'>Descripción:</label>
                     <textarea value={value.descripcion} onChange={valorInput} name="descripcion" maxLength={250}
-                        className='border-gray-400 border rounded-sm p-1 w-64' type="text" placeholder="Ingresa una descripción" required />
+                        className='border-gray-400 border rounded-sm p-1 w-[250px] resize-none ' type="text" placeholder="Ingresa una descripción" required />
                 </div>
                 <div className='flex justify-between items-center gap-2'>
                     <label className='font-medium'>Fecha de Ingreso:</label>
                     <input value={value.fecha_ingreso} onChange={valorInput} name="fecha_ingreso"
-                        className='border-gray-400 border rounded-sm p-1' type="date" required />
+                        className='border-gray-400 border rounded-sm p-1 w-[250px]' type="date" required />
                 </div>
                 <div className='flex justify-between items-center gap-2'>
                     <label className='font-medium'>Estado:</label>
-                    <select value={value.estado} onChange={valorInput} name="estado" className='border-gray-400 border rounded-sm p-1' required>
+                    <select value={value.estado} onChange={valorInput} name="estado" className='border-gray-400 border w-[250px] rounded-sm p-1' required>
         <option value="">Seleccione un estado</option>
         <option value="activo">Activo</option>
         <option value="inactivo">Inactivo</option>
@@ -235,7 +235,7 @@ function EquiposTemplate() {
                 <div className='flex justify-between items-center gap-2'>
     <label className='font-medium'>Categoría:</label>
     
-    <select value={value.fk_categoria} onChange={valorInput} name="fk_categoria" className='border-gray-400 border rounded-sm p-1' required>
+    <select value={value.fk_categoria} onChange={valorInput} name="fk_categoria" className='border-gray-400 border rounded-sm p-1 w-[250px]' required>
         <option value="">Seleccione categoría</option>
         {categorias.map(categoria => (
             <option key={categoria.id_categoria} value={categoria.id_categoria}>{categoria.nombre_categoria}</option>
@@ -245,7 +245,7 @@ function EquiposTemplate() {
 
                 <div className='flex justify-between items-center gap-2'>
                     <label className='font-medium'>Ubicación:</label>
-                    <select value={value.fk_ubicacion} onChange={valorInput} name="fk_ubicacion" className='border-gray-400 border rounded-sm p-1' required>
+                    <select value={value.fk_ubicacion} onChange={valorInput} name="fk_ubicacion" className='w-[250px] border-gray-400 border rounded-sm p-1' required>
         <option value="">Seleccione Ubicación</option>
         {ubicaciones.map(ubicacion => (
             <option key={ubicacion.id_ubicacion} value={ubicacion.id_ubicacion}>
@@ -308,19 +308,19 @@ function EquiposTemplate() {
             
               </div>
              <div className='flex flex-col gap-3'>
-             <div className='flex justify-between w-full items-center gap-2'>
+             <div className='flex justify-between items-center gap-2 w-[400px]'>
                     <label className='font-medium'>Descripción:</label>
                     <textarea value={value.descripcion} onChange={editValorInput} name="descripcion"
-                        className='border-gray-400 border w-64 rounded-sm p-1' type="text" placeholder="Ingresa una descripción" required />
+                        className='border-gray-400 border rounded-sm p-1 w-[250px]' type="text" placeholder="Ingresa una descripción" required />
                 </div>
                 <div className='flex justify-between w-full items-center gap-2'>
                     <label className='font-medium'>Fecha de Ingreso:</label>
                     <input value={value.fecha_ingreso} onChange={editValorInput} name="fecha_ingreso"
-                        className='border-gray-400 border rounded-sm p-1' type="date" required />
+                        className='border-gray-400 border rounded-sm p-1 w-[250px]' type="date" required />
                 </div>
-                <div className='flex justify-between w-full items-center gap-2'>
+                <div className='flex justify-between items-center gap-2 '>
                     <label className='font-medium'>Estado:</label>
-                    <select value={value.estado} onChange={editValorInput} name="estado" className='border-gray-400 border rounded-sm p-1' required>
+                    <select value={value.estado} onChange={editValorInput} name="estado" className='border-gray-400 border w-[250px] rounded-sm p-1' required>
         <option value="">Seleccione un estado</option>
         <option value="activo">Activo</option>
         <option value="inactivo">Inactivo</option>
@@ -332,7 +332,7 @@ function EquiposTemplate() {
                 <div className='flex justify-between w-full items-center gap-2'>
     <label className='font-medium'>Categoría:</label>
     
-    <select value={value.fk_categoria} onChange={editValorInput} name="fk_categoria" className='border-gray-400 border rounded-sm p-1' required>
+    <select value={value.fk_categoria} onChange={editValorInput} name="fk_categoria" className='border-gray-400 border w-[250px] rounded-sm p-1' required>
         <option value="">Seleccione una categoría</option>
         {categorias.map(categoria => (
             <option key={categoria.id_categoria} value={categoria.id_categoria}>{categoria.nombre_categoria}</option>
@@ -342,7 +342,7 @@ function EquiposTemplate() {
 
                 <div className='flex justify-between w-full items-center gap-2'>
                     <label className='font-medium'>Ubicación:</label>
-                    <select value={value.fk_ubicacion} onChange={editValorInput} name="fk_ubicacion" className='border-gray-400 border rounded-sm p-1' required >
+                    <select value={value.fk_ubicacion} onChange={editValorInput} name="fk_ubicacion" className='w-[250px] border-gray-400 border rounded-sm p-1' required >
         <option value="">Seleccione una Ubicación</option>
         {ubicaciones.map(ubicacion => (
             <option key={ubicacion.id_ubicacion} value={ubicacion.id_ubicacion}>
