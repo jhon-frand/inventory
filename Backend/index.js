@@ -1,13 +1,19 @@
-import express from "express";
-import morgan from "morgan";
-import { connectionDb } from "./src/database/database.js";
+import express, { urlencoded } from "express";
+import bodyParser from "body-parser";
+import tecnicos from "./src/routes/tecnicosrouter.js";
+import actividades from "./src/routes/actividadesrouter.js"
+import cors from 'cors';
 
-const app = express();
+const servidor = express();
 
-app.use(express.json());
-app.use(morgan("dev"));
+servidor.use(bodyParser.json());
+servidor.use(urlencoded({extended:true}));
+servidor.use(cors());
 
-app.listen(3000, () => {
-    console.log("server on port 3000");
-    connectionDb();
+servidor.use('/tecnicos', tecnicos);
+servidor.use('/actividades', actividades);
+
+
+servidor.listen(3000, ()=> {
+    console.log('ALEXANDER_MARTINEZ');
 });

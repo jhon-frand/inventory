@@ -11,6 +11,8 @@ export const pool = createPool({
     port: process.env.PORT
 });
 
+console.log(process.env.DATABASE)
+
 export const connectionDb = async () => {
     try {
         await pool.getConnection();
