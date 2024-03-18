@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import NavBar from '../components/organismos/NavBar'
 import SideBar from '../components/organismos/SideBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faToolbox } from '@fortawesome/free-solid-svg-icons'
+import { faToolbox, faUser } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
   return (
@@ -19,10 +19,10 @@ function Dashboard() {
    <div className='flex flex-col w-full  pt-24'>
       <div className='flex items-center justify-around'>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
-         <Link to={'/equipos'} className='flex flex-col justify-center items-center'>
+         <Link to={'/usuarios'} className='flex flex-col justify-center items-center'>
           <p className='text-white'>USUARIOS</p>
           <p className='text-white'>45</p>
-          <FontAwesomeIcon icon={faToolbox} className="text-white"/>
+          <FontAwesomeIcon icon={faUser} className="text-white"/>
          </Link>
         </div>
         <div className='w-48 bg-greenSena h-24 flex justify-center items-center rounded-3xl'>
