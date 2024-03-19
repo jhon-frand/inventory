@@ -11,7 +11,7 @@ export const listarTecnicos = async(req,res) => {
             return res.status(403).json ({message: "No hay tecnicos"});
         }
     } catch (e) {
-        return res.status(500).json ({message: "ERROR"});
+        return res.status(500).json ({message: "ERROR" + e.message});
     }
 };
 
@@ -24,7 +24,7 @@ export const registrarTecnico = async(req, res) => {
         if (rows.affectedRows>0) {
             return res.status(200).json({message: "Tecnico registrado exitosamente"});
         }else{
-            return res.status(403).json ({message: "No hay tecnicos"});
+            return res.status(403).json ({message: "Tecnico no registrado" + e.message});
         }
     } catch (e) {
         return res.status(500).json ({message: e.message});
@@ -41,7 +41,7 @@ export const actualizarTecnico = async(req, res) => {
         if (rows.affectedRows>0) {
             return res.status(200).json({message: "Tecnico actualizado exitosamente"});
         }else{
-            return res.status(403).json ({message: "Tecnicos no actualizado"});
+            return res.status(403).json ({message: "Tecnico no actualizado" + e.message});
         }
     } catch (e) {
         return res.status(500).json ({message: e.message});
@@ -73,7 +73,7 @@ export const eliminarTecnico = async(req, res) => {
         if (rows.affectedRows>0) {
             return res.status(200).json({message: "Tecnico eliminado exitosamente"});
         }else{
-            return res.status(403).json ({message: "No se elimino el tecnico"});
+            return res.status(403).json ({message: "No se elimino el tecnico" + e.message});
         }
     } catch (e) {
         return res.status(500).json ({message: e.message});

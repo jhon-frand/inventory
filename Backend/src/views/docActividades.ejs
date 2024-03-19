@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos Document</title>
+    <title>Tecnicos Documentacion</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
    <div class="container">
-    <h2>API EQUIPOS</h2>
+    <h2>API TECNICOS</h2>
    <div class="content-tables">
     <div class="content">
         <div class="table">
-            <h2>Registrar Equipo</h2>
+            <h2>Registrar Tecnico</h2>
             <table class="tableRegister">
                 <tr class="filas">
                     <td class="title">Número: </td>
@@ -20,15 +20,15 @@
                 </tr>
                 <tr>
                     <td class="title">Nombre endpoint: </td>
-                    <td class="td-right">Registrar Equipo</td>
+                    <td class="td-right">Registrar Tecnico</td>
                 </tr>
                 <tr>
                     <td class="title">URI: </td>
-                    <td class="td-right">localhost:3000/equipos</td>
+                    <td class="td-right">localhost:3000/tecnicos/registrar</td>
                 </tr>
                 <tr>
                     <td class="title">Descripción: </td>
-                    <td class="td-right">Endpoint para registrar un Equipo en la base de datos</td>
+                    <td class="td-right">Endpoint para registrar un tecnico en la base de datos</td>
                 </tr>
                 <tr>
                     <td class="title">Verbo HTTP: </td>
@@ -40,23 +40,19 @@
                 </tr>
                 <tr>
                     <td class="title">Usuarios: </td>
-                    <td class="td-right">Administrador, Encargado</td>
+                    <td class="td-right">Administrador</td>
                 </tr>
                 <tr>
                     <td class="title">Request JSON: </td>
+                    <br>
                     <td class="td-right">
-                        {
-                            "serial": 111,
-                            "nombre_equipo": "Molino",
-                            "marca_equipo": "MJK",
-                            "modelo_equipo": "20LT5",
-                            "fecha_ingreso": "2024-03-14",
-                            "descripcion": "Molino carnes rojas",
-                            "tipo_equipo": "eléctrico",
-                            "estado": "inactivo",
-                            "fk_categoria": 2,
-                            "fk_ubicacion": 3
-                          }
+                        {<br>
+                            "identificacion": "",<br>
+                            "nombres": "",<br>
+                            "apellidos": "",<br>
+                            "correo": "",<br>
+                            "telefono": ""<br>
+                        }<br>
                     </td>
                 </tr>
                 <tr>
@@ -66,27 +62,15 @@
                         <span>Correcto:</span> <br> <br>
                         status: 200 <br><br>
                        Body: <br>
-                       { <br>
-                        "message": "Equipo Registrada",<br>
-                        "equipo": <br> [
-                          {
-                            "fieldCount": 0,
-                            "affectedRows": 1,
-                            "insertId": 37,
-                            "info": "",
-                            "serverStatus": 2,
-                            "warningStatus": 0,
-                            "changedRows": 0
-                          }, <br>
-                          null
-                        ]
-                      } <br> <br>
+                       {
+                        "message": "Tecnico registrado exitosamente"
+                      }<br> <br>
                        </li>
                           <li> <span>Incorrecto:</span> <br><br>
                            status: 500 <br><br>
                            Body: <br>
                            {<br>
-                            "message": "error al registrar equipo",<br>
+                            "message": "Tecnico no registrado",<br>
                             "error": {<br>
                               muestra las características del error<br>
                             }
@@ -98,7 +82,7 @@
             </table>
         </div>
         <div class="table">
-            <h2>Listar Equipo</h2>
+            <h2>Listar Tecnicos</h2>
             <table class="tableRegister">
                 <tr class="filas">
                     <td class="title">Número: </td>
@@ -106,15 +90,15 @@
                 </tr>
                 <tr>
                     <td class="title">Nombre endpoint: </td>
-                    <td class="td-right">Listar Equipos</td>
+                    <td class="td-right">Listar Tecnicos</td>
                 </tr>
                 <tr>
                     <td class="title">URI: </td>
-                    <td class="td-right">localhost:3000/equipos</td>
+                    <td class="td-right">localhost:3000/tecnicos/listar</td>
                 </tr>
                 <tr>
                     <td class="title">Descripción: </td>
-                    <td class="td-right">Endpoint para listar los Equipos la base de datos</td>
+                    <td class="td-right">Endpoint para listar los tecnicos de la base de datos</td>
                 </tr>
                 <tr>
                     <td class="title">Verbo HTTP: </td>
@@ -126,7 +110,7 @@
                 </tr>
                 <tr>
                     <td class="title">Usuarios: </td>
-                    <td class="td-right">Administrador, Encargado </td>
+                    <td class="td-right">Administrador, Encargado</td>
                 </tr>
                 <tr>
                     <td class="title">Request JSON: </td>
@@ -139,32 +123,34 @@
                         <span>Correcto:</span> <br> <br>
                         status: 200 <br><br>
                        Body: <br>
-                       [ <br>
-                       {   <br>
-                        "id_equipo": 19,
-                        "serial": 111,
-                        "nombre_equipo": "Molino",
-                        "marca_equipo": "MJK",
-                        "modelo_equipo": "20LT5",
-                        "fecha_ingreso": "2024-03-14T05:00:00.000Z",
-                        "descripcion": "Molino carnes rojas",
-                        "tipo_equipo": "eléctrico",
-                        "estado": "inactivo",
-                        "fk_categoria": 22,
-                        "fk_ubicacion": 8,
-                        "nombre_categoria": "Maquinaria",
-                        "ambiente": "H-13",
-                        "sitio": "mesa 2",
-                        "nombre_unidad": "Gastronomía"
-                      },<br>
-                     ] <br> <br>
+                       [<br>
+                        {<br>
+                            "id_tecnico": 1,<br>
+                            "identificacion": 45465494,<br>
+                            "nombres": "Bob",<br>
+                            "apellidos": "Reparador",<br>
+                            "correo": "bobelreparador@gmail.com",<br>
+                            "telefono": "4787846"<br>
+                        },<br>
+                        {<br>
+                            "id_tecnico": 4,<br>
+                            "identificacion": 1084330393,<br>
+                            "nombres": "Dani",<br>
+                            "apellidos": "Rodriguez",<br>
+                            "correo": "dani@gmail.com", <br>
+                            "telefono": "65479" <br>
+                        } <br>
+                        ] <br> <br>
                        </li>
                           <li> <span>Incorrecto:</span> <br><br>
                            status: 500 <br><br>
                            Body: <br>
-                           {
-                            "message": "error al listar equipos"
-                           }
+                           {<br>
+                            "message": "ERROR"<br>
+                           }<br>
+                           "error": {<br>
+                            muestra las características del error<br>
+                          }
                           </li>
                     </td>
                 </tr>
@@ -173,7 +159,7 @@
     </div>
   <div class="content">
     <div class="table">
-        <h2>Buscar Equipo</h2>
+        <h2>Buscar Tecnicos</h2>
         <table class="tableRegister">
             <tr class="filas">
                 <td class="title">Número: </td>
@@ -181,15 +167,15 @@
             </tr>
             <tr>
                 <td class="title">Nombre endpoint: </td>
-                <td class="td-right">Buscar equipos</td>
+                <td class="td-right">Buscar Tecnico</td>
             </tr>
             <tr>
                 <td class="title">URI: </td>
-                <td class="td-right">localhost:3000/equipos/:id</td>
+                <td class="td-right">localhost:3000/categorias/consultar/:id</td>
             </tr>
             <tr>
                 <td class="title">Descripción: </td>
-                <td class="td-right">Endpoint para buscar un equipo en la base de datos por su ID</td>
+                <td class="td-right">Endpoint para buscar un tecnico en la base de datos por su ID</td>
             </tr>
             <tr>
                 <td class="title">Verbo HTTP: </td>
@@ -215,28 +201,21 @@
                     status: 200 <br><br>
                    Body: <br>
                    { <br>
-                    "id_equipo": 19,
-                    "serial": 111,
-                    "nombre_equipo": "Molino",
-                    "marca_equipo": "MJK",
-                    "modelo_equipo": "20LT5",
-                    "fecha_ingreso": "2024-03-14T05:00:00.000Z",
-                    "descripcion": "Molino carnes rojas",
-                    "tipo_equipo": "eléctrico",
-                    "estado": "inactivo",
-                    "fk_categoria": 22,
-                    "fk_ubicacion": 8,
-                    "nombre_categoria": "Maquinaria",
-                    "ambiente": "H-13",
-                    "sitio": "mesa 2",
-                    "nombre_unidad": "Gastronomía" <br>
-                  },  <br> <br>
+                        [<br>
+                            "id_tecnico": 1,<br>
+                            "identificacion": 45465494,<br>
+                            "nombres": "Bob",<br>
+                            "apellidos": "Reparador",<br>
+                            "correo": "bobelreparador@gmail.com",<br>
+                            "telefono": "4787846"<br>
+                        ]
+                   }  <br> <br>
                    </li>
                       <li> <span>Incorrecto:</span> <br><br>
                        status: 404 <br><br>
                        Body: <br>
                        {
-                        "message": "error al buscar equipo"
+                        "message": "No se encontro el tecnico"
                        }
                       </li>
                 </td>
@@ -244,7 +223,7 @@
         </table>
     </div>
     <div class="table">
-        <h2>Actualizar Equipo</h2>
+        <h2>Actualizar Tecnico</h2>
         <table class="tableRegister">
             <tr class="filas">
                 <td class="title">Número: </td>
@@ -252,15 +231,15 @@
             </tr>
             <tr>
                 <td class="title">Nombre endpoint: </td>
-                <td class="td-right">Actualizar Equipo </td>
+                <td class="td-right">Actualizar Tecnico </td>
             </tr>
             <tr>
                 <td class="title">URI: </td>
-                <td class="td-right">localhost:3000/equipos/:id</td>
+                <td class="td-right">localhost:3000/tecnicos/actulizar/:id</td>
             </tr>
             <tr>
                 <td class="title">Descripción: </td>
-                <td class="td-right">Endpoint para actualizar datos de un equipo la base de datos</td>
+                <td class="td-right">Endpoint para actualizar datos de un tecnico en la base de datos</td>
             </tr>
             <tr>
                 <td class="title">Verbo HTTP: </td>
@@ -278,17 +257,8 @@
                 <td class="title">Request JSON: </td>
                 <td class="td-right">
                     { <br>
-                        "serial": 111,
-                        "nombre_equipo": "Molino",
-                        "marca_equipo": "MJK",
-                        "modelo_equipo": "20LT5",
-                        "fecha_ingreso": "2024-03-13",
-                        "descripcion": "Molino carnes rojas",
-                        "tipo_equipo": "eléctrico",
-                        "estado": "inactivo",
-                        "fk_categoria": 22,
-                        "fk_ubicacion": 8 <br>
-                      }
+                        "nombre_categoria": "Maquinaria", <br>
+                       } 
                 </td>
             </tr>
             <tr>
@@ -299,27 +269,15 @@
                     status: 200 <br><br>
                    Body: <br>
                    {<br>
-                    "message": "equipo Actualizado",<br>
-                    "equipo [ <br>
-                      {
-                        "fieldCount": 0,
-                        "affectedRows": 1,
-                        "insertId": 0,
-                        "info": "Rows matched: 1  Changed: 1  Warnings: 0",
-                        "serverStatus": 2,
-                        "warningStatus": 0,
-                        "changedRows": 1
-                      }, <br>
-                      null
-                    ]
+                        "message": "Tecnico actualizado exitosamente"<br>
                   }
                     <br> <br>
                    </li>
                       <li> <span>Incorrecto:</span> <br><br>
-                       status: 500 <br><br>
+                       status: 404 <br><br>
                        Body: <br>
                        { <br>
-                        "message": "error al actualizar equipo", <br>
+                        "message": "Tecnico no actualizado", <br>
                         "error": {<br>
                             muestra las características del error <br>
                             }  <br>
@@ -329,7 +287,69 @@
             </tr>
         </table>
     </div>
+    <div class="table">
+        <h2>Eliminar Tecnicos</h2>
+        <table class="tableRegister">
+            <tr class="filas">
+                <td class="title">Número: </td>
+                <td class="td-right">5</td>
+            </tr>
+            <tr>
+                <td class="title">Nombre endpoint: </td>
+                <td class="td-right">Eliminar Tecnico</td>
+            </tr>
+            <tr>
+                <td class="title">URI: </td>
+                <td class="td-right">localhost:3000/tecnicos/eliminar/:id</td>
+            </tr>
+            <tr>
+                <td class="title">Descripción: </td>
+                <td class="td-right">Endpoint para eliminar un tecnico en la base de datos por su ID</td>
+            </tr>
+            <tr>
+                <td class="title">Verbo HTTP: </td>
+                <td class="td-right">DELETE</td>
+            </tr>
+            <tr>
+                <td class="title">Header: </td>
+                <td class="td-right"></td>
+            </tr>
+            <tr>
+                <td class="title">Usuarios: </td>
+                <td class="td-right">Administrador</td>
+            </tr>
+            <tr>
+                <td class="title">Request JSON: </td>
+                <td class="td-right"></td>
+            </tr>
+            <tr>
+                <td class="title">Response: </td>
+                <td class="td-right">
+                <li>
+                    <span>Correcto:</span> <br> <br>
+                    status: 200 <br><br>
+                Body: <br>
+                { <br>
+                        [<br>
+                        message: "Tecnico eliminado exitosamente"<br>
+                        ]
+                }  <br> <br>
+                </li>
+                    <li> <span>Incorrecto:</span> <br><br>
+                    status: 404 <br><br>
+                    Body: { <br>
+                        "message": "Tecnico no eliminado", <br>
+                        "error": {<br>
+                            muestra las características del error <br>
+                            }  <br>
+                    }
+                    </li>
+                </td>
+            </tr>
+        </table>
+    </div>
   </div>
+
    </div>
    </div>
 </body>
