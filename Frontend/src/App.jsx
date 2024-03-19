@@ -5,6 +5,7 @@ import CategoriasTemplate from './components/templates/CategoriasTemplate';
 import UbicacionesTemplate from './components/templates/UbicacionesTemplate';
 import PruebasTemplate from './components/templates/PruebasTemplate';
 import UnidadesTemplate from './components/templates/UnidadesTemplate';
+import MantenimientosTemplate from './components/templates/MantenimientosTemplate';
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
       <Route path='/ubicaciones' element={<UbicacionesTemplate/>}/>
       <Route path='/pruebas' element={<PruebasTemplate/>}/>
       <Route path='/unidades' element={<UnidadesTemplate/>}/>
+      <Route path='/mantenimientos' element={<MantenimientosTemplate/>} />
     </Routes>
     </BrowserRouter>
      
