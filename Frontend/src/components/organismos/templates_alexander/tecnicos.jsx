@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from '../NavBar'
 import SideBar from '../SideBar'
-let myModal;
-let myModalActualizar;
 
 function Tecnicos() {
     
@@ -32,7 +30,7 @@ function Tecnicos() {
 
     };
 
- // MODAL Y FUNCION DE REGISTRAR
+ // FUNCION DE REGISTRAR
     const handleForm = async (event) => {
         event.preventDefault();
         try {
@@ -46,7 +44,6 @@ function Tecnicos() {
 
             if (response.status === 200) {
                 alert('Usuario registrado');
-                myModal.hide();
                 listarTodosUsuarios();
             }
         } catch (e) {
@@ -54,7 +51,7 @@ function Tecnicos() {
         }
     };
 
-    //MODAL Y FUNCION DE ACTUALIZAR
+    //FUNCION DE ACTUALIZAR
     const handleFormActualizar=async(event, id_tecnico)=>{
         event.preventDefault();
         try {
@@ -65,7 +62,6 @@ function Tecnicos() {
 
             if(response.status==200){
                 alert('Usuario actualizado');
-                myModalActualizar.hide();
             }
     
             listarTodosUsuarios(); 
@@ -108,20 +104,6 @@ function Tecnicos() {
     }
 
     // ESTO ES PARA MOSTRAR LOS MODALS
-    useEffect(()=>{
-
-        myModal = new bootstrap.Modal('#myModal', {
-            keyboard: false
-        });
-
-        myModalActualizar = new bootstrap.Modal('#myModalActualizar', {
-            keyboard: false
-        })
-        
-
-        listarTodosUsuarios();
-
-    },[]); 
 
     return (
 
@@ -141,7 +123,6 @@ function Tecnicos() {
                    <div className="text-center">
                     
                    <button type="button" className="btn m-3 " style={{backgroundColor : 'gray', color: 'white'}} onClick={()=>{
-                        myModal.show();
 
                         setValues({
                           id_tecnico: "",
@@ -209,7 +190,6 @@ function Tecnicos() {
                                 correo: foundUser.correo,
                                 telefono: foundUser.telefono,
                                 });
-                                myModalActualizar.show();
                             }}
                             >
                             Actualizar
@@ -246,7 +226,6 @@ function Tecnicos() {
                                     correo: user.correo,
                                     telefono: user.telefono,
                                 });
-                                myModalActualizar.show();
                                 }}
                             >
                                 Actualizar
@@ -263,18 +242,7 @@ function Tecnicos() {
 
 
             {/* MODAL REGISTRAR*/}
-            <div className="modal"
-            id="myModal" tabIndex="-1">
-            <div className="modal-dialog">
-            <div className="modal-content">
-            <div className="modal-header">
-            <h5 className="modal-title">REGISTRAR</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-            
-            <div className="">
-                  <form onSubmit={handleForm}>
+                <form onSubmit={handleForm}>
                     
                     <label> ID </label>
                     <input type="text" name="id_tecnico" className='form-control'  value={values.id_tecnico} onChange={handleInputChange} />
@@ -293,25 +261,10 @@ function Tecnicos() {
                         Registrar
                     </button>
 
-                  </form>
-
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
+                </form>
             {/* MODAL REGISTRAR FIN */}
 
             {/* MODAL ACTUALIZAR*/}
-                <div className="modal" id="myModalActualizar" tabIndex="-1">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">ACTUALIZAR</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="">
                                     <form onSubmit={(event) => handleFormActualizar(event, values.id_tecnico)}>
 
                                         <label> Identificacion </label>
@@ -328,11 +281,6 @@ function Tecnicos() {
                                          <button type="submit" className="btn btn-primary mt-3">Actualizar</button>
 
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             {/* MODAL ACTUALIZAR FIN */}
             </div>
         </div>

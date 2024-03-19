@@ -4,7 +4,6 @@ import Actividades from './components/organismos/templates_alexander/actividades
 import Tecnicos from './components/organismos/templates_alexander/tecnicos';
 
 function App() {
-  re
   return (
     <>
     <BrowserRouter>
