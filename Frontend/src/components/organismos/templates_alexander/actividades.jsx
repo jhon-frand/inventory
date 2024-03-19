@@ -3,17 +3,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from '../NavBar'
 import SideBar from '../SideBar'
-let myModal;
-let myModalActualizar;
 
 function Actividades() {
     
+    //ESTADOS PARA LOS DATOS
     const [useUsuarios, setUsuarios] = useState([]);
 
+    //ESTADOS PARA LA BUSQUEDA
     const [foundUser, setFoundUser] = useState(null);
-
     const [searchTerm, setSearchTerm] = useState("");
 
+    //VALORES GLOBALES Y VALORES EN EL REGISTRO
     const [values, setValues] = useState({
 
         id_actividad: "",
@@ -33,7 +33,7 @@ function Actividades() {
 
     };
 
- // MODAL Y FUNCION DE REGISTRAR
+ // FUNCION DE REGISTRAR
     const handleForm = async (event) => {
         event.preventDefault();
         try {
@@ -47,7 +47,7 @@ function Actividades() {
 
             if (response.status === 200) {
                 alert('Actividad registrada');
-                myModal.hide();
+                setIsOpen(false);
                 listarTodosUsuarios();
             }
         } catch (e) {
@@ -55,7 +55,7 @@ function Actividades() {
         }
     };
 
-    //MODAL Y FUNCION DE ACTUALIZAR
+    //FUNCION DE ACTUALIZAR
     const handleFormActualizar=async(event, id_actividad)=>{
         event.preventDefault();
         try {
@@ -66,7 +66,7 @@ function Actividades() {
 
             if(response.status==200){
                 alert('Actividad actualizada');
-                myModalActualizar.hide();
+                setIsOpenUpdate(false);
             }
     
             listarTodosUsuarios(); 
@@ -75,16 +75,14 @@ function Actividades() {
         }
     };
 
+    //DATOS ENCONTRADOS EN LA BUSQUEDA
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
       };
 
     //FUNCIO DE BUSCAR
-        // Crea una función para manejar la búsqueda cuando se presiona el botón
         const handleSearchSubmit = () => {
-        // Busca el usuario con el ID proporcionado
         const found = useUsuarios.find((user) => user.id_actividad.toString() === searchTerm);
-        // Actualiza el estado con el usuario encontrado
         setFoundUser(found);
         };
 
@@ -108,94 +106,108 @@ function Actividades() {
         });
     }
 
-    // ESTO ES PARA MOSTRAR LOS MODALS
+    // FUNCIONES QUE SON CONSTANTES
     useEffect(()=>{
+      listarTodosUsuarios();
+    }, []);
 
-        myModal = new bootstrap.Modal('#myModal', {
-            keyboard: false
-        });
-
-        myModalActualizar = new bootstrap.Modal('#myModalActualizar', {
-            keyboard: false
-        })
-        
-
-        listarTodosUsuarios();
-
-    },[]); 
-
-    return (
+    //MODALES REGISTRAS Y ACTUALIZAR
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenUpdate, setIsOpenUpdate] = useState(false);
+    
+  return (
+    //CONTENEDOR DEL TODO
   <div className="relative">
-    <div className="absolute top-0 left-0 right-0 z-50">
-      <NavBar />
-    </div>
+    {/* IMPORTANCION DEL NAVBAR */}
+      <div className="absolute top-0 left-0 right-0 z-50">
+        <NavBar />
+      </div>
+    {/* //CONTENEDOR PRINCIPAL */}
     <div className="flex">
+      {/* IMPORTACIÓN DEL SIDEBAR */}
       <div>
         <SideBar />
       </div>
+
       <div className="flex flex-col items-center justify-center w-full">
-        {/* Buscador y botón de registro */}
+        {/* BOTÓN DE REGISTRO */}
         <div className="flex flex-col items-center mb-4">
 
-        <button type="button" className="btn m-3 " style={{backgroundColor : 'gray', color: 'white'}} onClick={()=>{
-                        myModal.show();
+          {/* INPUT Y BOTÓN DE BÚSQUEDA */}
+          <div className="flex items-center m-8 gap-2">
+            <input
+              type="text"
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+              placeholder="Buscar por ID"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleSearchSubmit}>
+              BUSCAR
+            </button>
+          </div>
 
-                        setValues({
-                            id_actividad: "",
-                            fecha_realizacion_actividad: "",
-                            descripcion: "",
-                            fk_mantenimiento: "",
-                            fk_tecnico: "",
-                        });
-                        
-        }}>REGISTRAR</button>
-
-          <input
-            type="text"
-            className="form-control mb-2"
-            placeholder="Buscar por ID"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-          <button
-            className="btn btn-primary"
-            onClick={handleSearchSubmit}
-          >
-            Buscar
-          </button>
         </div>
+
         {/* Tabla de datos */}
         <div className="w-full">
-          <table className="table table-striped">
-            <thead>
+          <table className="min-w-full divide-y divide-gray-200 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <thead className="bg-gray-50">
               <tr>
-                <th>ID</th>
-                <th>REALIZACIÓN</th>
-                <th>DESCRIPCIÓN</th>
-                <th>MANTENIMIENTO</th>
-                <th>TECNICO</th>
-                <th>ACCIONES</th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  ID
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  REALIZACIÓN
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  DESCRIPCIÓN
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  MANTENIMIENTO
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  TÉCNICO
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  ACCIONES
+                </th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white divide-y divide-gray-200">
               {foundUser ? (
-                <tr key={foundUser.id_actividad}>
-                  <td>{foundUser.id_actividad}</td>
-                  <td>{foundUser.fecha_realizacion_actividad}</td>
-                  <td>{foundUser.descripcion}</td>
-                  <td>{foundUser.fk_mantenimiento}</td>
-                  <td>{foundUser.fk_tecnico}</td>
-                  <td>
-                    <button
-                      className="btn btn-danger m-1"
-                      onClick={() => {
-                        eliminarUsuarios(foundUser.id_actividad);
-                      }}
-                    >
-                      Eliminar
+                <tr>
+                  <td className="px-6 py-4 whitespace-nowrap">{foundUser.id_actividad}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{foundUser.fecha_realizacion_actividad}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{foundUser.descripcion}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{foundUser.fk_mantenimiento}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{foundUser.fk_tecnico}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
+                      ELIMINAR
                     </button>
+
                     <button
-                      className="btn btn-primary"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+
                       onClick={(event) => {
                         setValues({
                           id_actividad: foundUser.id_actividad,
@@ -204,32 +216,27 @@ function Actividades() {
                           fk_mantenimiento: foundUser.fk_mantenimiento,
                           fk_tecnico: foundUser.fk_tecnico,
                         });
-                        myModalActualizar.show();
+                        setIsOpenUpdate(true);
                       }}
                     >
-                      Actualizar
+                      ACTUALIZAR
                     </button>
                   </td>
                 </tr>
               ) : (
                 useUsuarios.map((user) => (
                   <tr key={user.id_actividad}>
-                    <td>{user.id_actividad}</td>
-                    <td>{user.fecha_realizacion_actividad}</td>
-                    <td>{user.descripcion}</td>
-                    <td>{user.fk_mantenimiento}</td>
-                    <td>{user.fk_tecnico}</td>
-                    <td>
-                      <button
-                        className="btn btn-danger m-1"
-                        onClick={() => {
-                          eliminarUsuarios(user.id_actividad);
-                        }}
-                      >
-                        Eliminar
+                    <td className="px-6 py-4 whitespace-nowrap">{user.id_actividad}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.fecha_realizacion_actividad}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.descripcion}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.fk_mantenimiento}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{user.fk_tecnico}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
+                        ELIMINAR
                       </button>
                       <button
-                        className="btn btn-primary"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         onClick={(event) => {
                           setValues({
                             id_actividad: user.id_actividad,
@@ -238,10 +245,10 @@ function Actividades() {
                             fk_mantenimiento: user.fk_mantenimiento,
                             fk_tecnico: user.fk_tecnico,
                           });
-                          myModalActualizar.show();
+                          setIsOpenUpdate(true);
                         }}
                       >
-                        Actualizar
+                        ACTUALIZAR
                       </button>
                     </td>
                   </tr>
@@ -249,62 +256,168 @@ function Actividades() {
               )}
             </tbody>
           </table>
+
+          <div className="flex justify-center m-8">
+            <button
+              type="button"
+              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded m-3"
+              onClick={() => {
+                setValues({
+                  id_actividad: "",
+                  fecha_realizacion_actividad: "",
+                  descripcion: "",
+                  fk_mantenimiento: "",
+                  fk_tecnico: "",
+                });
+                setIsOpen(true);
+              }}
+              >
+              REGISTRAR
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
+
     {/* MODAL REGISTRAR */}
-    <div className="modal" id="myModal" tabIndex="-1">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">REGISTRAR</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    {isOpen && (
+      <form onSubmit={handleForm} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
+          <div className='bg-white p-5 rounded-md flex flex-col justify-center items-center gap-5'>
+              <div className="flex w-full border-b-2">
+                  <h2 className="p-1 font-semibold">REGISTRAR NUEVA ACTIVIDAD</h2>
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>ID:</label>
+                  <input
+                      type="text"
+                      name="id_actividad"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.id_actividad}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Realización:</label>
+                  <input
+                      type="date"
+                      name="fecha_realizacion_actividad"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fecha_realizacion_actividad}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Descripción:</label>
+                  <input
+                      type="text"
+                      name="descripcion"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.descripcion}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Mantenimiento:</label>
+                  <input
+                      type="text"
+                      name="fk_mantenimiento"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fk_mantenimiento}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Técnico:</label>
+                  <input
+                      type="text"
+                      name="fk_tecnico"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fk_tecnico}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className="flex gap-14">
+              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-md" onClick={()=> setIsOpen(false)}>
+                  CANCELAR
+              </button>
+              <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">
+                  REGISTRAR
+              </button>
+              </div>
           </div>
-          <div className="modal-body">
-            <form onSubmit={handleForm}>
-              <label>ID</label>
-              <input type="text" name="id_actividad" className="form-control mb-2" value={values.id_actividad} onChange={handleInputChange} />
-              <label>Realización</label>
-              <input type="date" name="fecha_realizacion_actividad" className="form-control mb-2" value={values.fecha_realizacion_actividad} onChange={handleInputChange} />
-              <label>Descripción</label>
-              <input type="text" name="descripcion" className="form-control mb-2" value={values.descripcion} onChange={handleInputChange} />
-              <label>Mantenimiento</label>
-              <input type="text" name="fk_mantenimiento" className="form-control mb-2" value={values.fk_mantenimiento} onChange={handleInputChange} />
-              <label>Técnico</label>
-              <input type="text" name="fk_tecnico" className="form-control mb-2" value={values.fk_tecnico} onChange={handleInputChange} />
-              <button type="submit" className="btn btn-primary mt-3">Registrar</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+      </form>
+    )}
     {/* MODAL REGISTRAR FIN */}
+
     {/* MODAL ACTUALIZAR */}
-    <div className="modal" id="myModalActualizar" tabIndex="-1">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">ACTUALIZAR</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    {isOpenUpdate && (
+      <form onSubmit={(event) => handleFormActualizar(event, values.id_actividad)} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
+          <div className='bg-white p-5 rounded-md flex flex-col justify-center items-center gap-5'>
+              <div className="flex w-full border-b-2">
+                  <h2 className="p-1 font-semibold">EDITAR DATOS DE CATEGORÍA</h2>
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>ID:</label>
+                  <input
+                      type="text"
+                      name="id_actividad"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.id_actividad}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Realización:</label>
+                  <input
+                      type="date"
+                      name="fecha_realizacion_actividad"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fecha_realizacion_actividad}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Descripción:</label>
+                  <input
+                      type="text"
+                      name="descripcion"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.descripcion}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Mantenimiento:</label>
+                  <input
+                      type="text"
+                      name="fk_mantenimiento"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fk_mantenimiento}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className='flex justify-center items-center gap-2'>
+                  <label className='font-medium'>Técnico:</label>
+                  <input
+                      type="text"
+                      name="fk_tecnico"
+                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      value={values.fk_tecnico}
+                      onChange={handleInputChange}
+                  />
+              </div>
+              <div className="flex gap-14">
+              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-md" onClick={()=> setIsOpenUpdate(false)}>
+                    CANCELAR
+                </button>
+                <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">
+                    ACTUALIZAR
+                </button>
+              </div>
           </div>
-          <div className="modal-body">
-            <form onSubmit={(event) => handleFormActualizar(event, values.id_actividad)}>
-              <label>ID</label>
-              <input type="text" name="id_actividad" className="form-control mb-2" value={values.id_actividad} onChange={handleInputChange} />
-              <label>Realización</label>
-              <input type="date" name="fecha_realizacion_actividad" className="form-control mb-2" value={values.fecha_realizacion_actividad} onChange={handleInputChange} />
-              <label>Descripción</label>
-              <input type="text" name="descripcion" className="form-control mb-2" value={values.descripcion} onChange={handleInputChange} />
-              <label>Mantenimiento</label>
-              <input type="text" name="fk_mantenimiento" className="form-control mb-2" value={values.fk_mantenimiento} onChange={handleInputChange} />
-              <label>Técnico</label>
-              <input type="text" name="fk_tecnico" className="form-control mb-2" value={values.fk_tecnico} onChange={handleInputChange} />
-              <button type="submit" className="btn btn-primary mt-3">Actualizar</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+      </form>
+    )}
     {/* MODAL ACTUALIZAR FIN */}
   </div>
 );
