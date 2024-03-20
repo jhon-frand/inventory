@@ -100,7 +100,7 @@ function Tecnicos() {
             alert('Usuario eliminado exitosamente');
         })
         .catch (error => {
-            console.error('Error al eliminar usuario', error);
+            console.error('Error al eliminar usuario', + error.data);
         });
     }
 
@@ -140,7 +140,7 @@ function Tecnicos() {
             onChange={handleSearchChange}
             />
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl btn btn-primary" onClick={handleSearchSubmit}>
-            Buscar
+            BUSCAR
             </button>
         </div>
         </div>
