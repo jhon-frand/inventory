@@ -130,28 +130,26 @@ function Actividades() {
       </div>
 
       <div className="flex flex-col items-center justify-center w-full">
-        {/* BOTÓN DE REGISTRO */}
-        <div className="flex flex-col items-center mb-4">
 
-          {/* INPUT Y BOTÓN DE BÚSQUEDA */}
-          <div className="flex items-center m-8 gap-2">
+        {/* INPUT Y BOTÓN DE BÚSQUEDA */}
+        <div className="mb-3">
+          <div className="flex items-center gap-2 m-8 mt-20">
             <input
               type="text"
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-3xl py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
               placeholder="Buscar por ID"
               value={searchTerm}
               onChange={handleSearchChange}
             />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleSearchSubmit}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl" onClick={handleSearchSubmit}>
               BUSCAR
             </button>
           </div>
-
         </div>
 
         {/* Tabla de datos */}
         <div className="w-full">
-          <table className="min-w-full divide-y divide-gray-200 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200 shadow overflow-hidden border-b border-gray-200 sm:rounded-3xl-lg">
             <thead className="bg-gray-50">
               <tr>
                 <th
@@ -201,12 +199,12 @@ function Actividades() {
                   <td className="px-6 py-4 whitespace-nowrap">{foundUser.fk_mantenimiento}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{foundUser.fk_tecnico}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded-3xl" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
                       ELIMINAR
                     </button>
 
                     <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl"
 
                       onClick={(event) => {
                         setValues({
@@ -232,11 +230,11 @@ function Actividades() {
                     <td className="px-6 py-4 whitespace-nowrap">{user.fk_mantenimiento}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{user.fk_tecnico}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
+                      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-3 rounded-3xl" onClick={() => eliminarUsuarios(foundUser.id_actividad)}>
                         ELIMINAR
                       </button>
                       <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl"
                         onClick={(event) => {
                           setValues({
                             id_actividad: user.id_actividad,
@@ -260,7 +258,7 @@ function Actividades() {
           <div className="flex justify-center m-8">
             <button
               type="button"
-              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded m-3"
+              className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-3xl m-3"
               onClick={() => {
                 setValues({
                   id_actividad: "",
@@ -275,7 +273,6 @@ function Actividades() {
               REGISTRAR
             </button>
           </div>
-
         </div>
       </div>
     </div>
@@ -283,7 +280,7 @@ function Actividades() {
     {/* MODAL REGISTRAR */}
     {isOpen && (
       <form onSubmit={handleForm} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
-          <div className='bg-white p-5 rounded-md flex flex-col justify-center items-center gap-5'>
+          <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
               <div className="flex w-full border-b-2">
                   <h2 className="p-1 font-semibold">REGISTRAR NUEVA ACTIVIDAD</h2>
               </div>
@@ -292,7 +289,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="id_actividad"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.id_actividad}
                       onChange={handleInputChange}
                   />
@@ -302,7 +299,7 @@ function Actividades() {
                   <input
                       type="date"
                       name="fecha_realizacion_actividad"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fecha_realizacion_actividad}
                       onChange={handleInputChange}
                   />
@@ -312,7 +309,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="descripcion"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.descripcion}
                       onChange={handleInputChange}
                   />
@@ -322,7 +319,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="fk_mantenimiento"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fk_mantenimiento}
                       onChange={handleInputChange}
                   />
@@ -332,16 +329,16 @@ function Actividades() {
                   <input
                       type="text"
                       name="fk_tecnico"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fk_tecnico}
                       onChange={handleInputChange}
                   />
               </div>
               <div className="flex gap-14">
-              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-md" onClick={()=> setIsOpen(false)}>
+              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-3xl-md" onClick={()=> setIsOpen(false)}>
                   CANCELAR
               </button>
-              <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">
+              <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-3xl-md">
                   REGISTRAR
               </button>
               </div>
@@ -353,7 +350,7 @@ function Actividades() {
     {/* MODAL ACTUALIZAR */}
     {isOpenUpdate && (
       <form onSubmit={(event) => handleFormActualizar(event, values.id_actividad)} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
-          <div className='bg-white p-5 rounded-md flex flex-col justify-center items-center gap-5'>
+          <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
               <div className="flex w-full border-b-2">
                   <h2 className="p-1 font-semibold">EDITAR DATOS DE CATEGORÍA</h2>
               </div>
@@ -362,7 +359,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="id_actividad"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.id_actividad}
                       onChange={handleInputChange}
                   />
@@ -372,7 +369,7 @@ function Actividades() {
                   <input
                       type="date"
                       name="fecha_realizacion_actividad"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fecha_realizacion_actividad}
                       onChange={handleInputChange}
                   />
@@ -382,7 +379,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="descripcion"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.descripcion}
                       onChange={handleInputChange}
                   />
@@ -392,7 +389,7 @@ function Actividades() {
                   <input
                       type="text"
                       name="fk_mantenimiento"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fk_mantenimiento}
                       onChange={handleInputChange}
                   />
@@ -402,16 +399,16 @@ function Actividades() {
                   <input
                       type="text"
                       name="fk_tecnico"
-                      className='border-gray-400 border outline-none rounded-sm p-1'
+                      className='border-gray-400 border outline-none rounded-3xl-sm p-1'
                       value={values.fk_tecnico}
                       onChange={handleInputChange}
                   />
               </div>
               <div className="flex gap-14">
-              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-md" onClick={()=> setIsOpenUpdate(false)}>
+              <button type="button" className="bg-red-500 p-2 font-bold hover:bg-red-700 text-white rounded-3xl-md" onClick={()=> setIsOpenUpdate(false)}>
                     CANCELAR
                 </button>
-                <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-md">
+                <button type="submit" className="bg-green-500 p-2 font-bold hover:bg-green-700 text-white rounded-3xl-md">
                     ACTUALIZAR
                 </button>
               </div>

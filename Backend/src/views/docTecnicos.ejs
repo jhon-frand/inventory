@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Técnicos</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+   <div class="container">
+    <h2>API TÉCNICOS</h2>
+   <div class="content-tables">
+    <div class="content">
+        <div class="row">
+            <div class="table">
+                <h2>Registrar Técnico</h2>
+                <table class="tableRegister">
+                    <tr class="filas">
+                        <td class="title">Número: </td>
+                        <td class="td-right">1</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Nombre endpoint: </td>
+                        <td class="td-right">Registrar Técnico</td>
+                    </tr>
+                    <tr>
+                        <td class="title">URI: </td>
+                        <td class="td-right">localhost:3000/tecnicos/registrar</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Descripción: </td>
+                        <td class="td-right">Endpoint para registrar un Técnico en la base de datos</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Verbo HTTP: </td>
+                        <td class="td-right">POST</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Header: </td>
+                        <td class="td-right">Content-Type: JSON</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Request JSON: </td>
+                        <td class="td-right">
+                            {
+                                "identificacion": "123456789",
+                                "nombres": "Juan",
+                                "apellidos": "Perez",
+                                "correo": "juanperez@example.com",
+                                "telefono": "1234567890"
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Response: </td>
+                        <td class="td-right">
+                           <li>
+                            <span>Correcto:</span> <br> <br>
+                            status: 200 <br><br>
+                           Body: <br>
+                           {
+                                "message": "Técnico registrado exitosamente"
+                           }
+                          <br> <br>
+                           </li>
+                          <li>
+                            <span>Incorrecto:</span> <br><br>
+                            status: 403 <br><br>
+                            Body: <br>
+                            {
+                                "message": "No se registró el técnico"
+                            }
+                          </li>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table">
+                <h2>Listar Técnicos</h2>
+                <table class="tableRegister">
+                    <tr class="filas">
+                        <td class="title">Número: </td>
+                        <td class="td-right">2</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Nombre endpoint: </td>
+                        <td class="td-right">Listar Técnicos</td>
+                    </tr>
+                    <tr>
+                        <td class="title">URI: </td>
+                        <td class="td-right">localhost:3000/tecnicos/listar</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Descripción: </td>
+                        <td class="td-right">Endpoint para listar los Técnicos en la base de datos</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Verbo HTTP: </td>
+                        <td class="td-right">GET</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Response: </td>
+                        <td class="td-right">
+                           <li>
+                            <span>Correcto:</span> <br> <br>
+                            status: 200 <br><br>
+                           Body: <br>
+                           [ <br>
+                           {   <br>
+                            "id": 1, <br>
+                            "identificacion": "123456789", <br>
+                            "nombres": "Juan", <br>
+                            "apellidos": "Perez", <br>
+                            "correo": "juanperez@example.com", <br>
+                            "telefono": "1234567890" <br>
+                          },<br>
+                         ] <br> <br>
+                           </li>
+                          <li>
+                            <span>Incorrecto:</span> <br><br>
+                            status: 403 <br><br>
+                            Body: <br>
+                            {
+                                "message": "No hay técnicos"
+                            }
+                          </li>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+       <div class="row">
+        <div class="table">
+            <h2>Buscar Técnico</h2>
+            <table class="tableRegister">
+                <tr class="filas">
+                    <td class="title">Número: </td>
+                    <td class="td-right">3</td>
+                </tr>
+                <tr>
+                    <td class="title">Nombre endpoint: </td>
+                    <td class="td-right">Buscar Técnico</td>
+                </tr>
+                <tr>
+                    <td class="title">URI: </td>
+                    <td class="td-right">localhost:3000/tecnicos/consultar/:id</td>
+                </tr>
+                <tr>
+                    <td class="title">Descripción: </td>
+                    <td class="td-right">Endpoint para buscar un Técnico en la base de datos por su ID</td>
+                </tr>
+                <tr>
+                    <td class="title">Verbo HTTP: </td>
+                    <td class="td-right">GET</td>
+                </tr>
+                <tr>
+                    <td class="title">Usuarios: </td>
+                    <td class="td-right">Administrador, Encargado</td>
+                </tr>
+                <tr>
+                    <td class="title">Response: </td>
+                    <td class="td-right">
+                       <li>
+                        <span>Correcto:</span> <br> <br>
+                        status: 200 <br><br>
+                       Body: <br>
+                       { <br>
+                        "id": 1, <br>
+                        "identificacion": "123456789", <br>
+                        "nombres": "Juan", <br>
+                        "apellidos": "Perez", <br>
+                        "correo": "juanperez@example.com", <br>
+                        "telefono": "1234567890" <br>
+                       } <br> <br>
+                       </li>
+                      <li>
+                        <span>Incorrecto:</span> <br><br>
+                        status: 403 <br><br>
+                        Body: <br>
+                        {
+                            "message": "No se encontró el técnico"
+                        }
+                      </li>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <h2>Actualizar Técnico</h2>
+            <table class="tableRegister">
+                <tr class="filas">
+                    <td class="title">Número: </td>
+                    <td class="td-right">4</td>
+                </tr>
+                <tr>
+                    <td class="title">Nombre endpoint: </td>
+                    <td class="td-right">Actualizar Técnico</td>
+                </tr>
+                <tr>
+                    <td class="title">URI: </td>
+                    <td class="td-right">localhost:3000/tecnicos/actualizar/:id</td>
+                </tr>
+                <tr>
+                    <td class="title">Descripción: </td>
+                    <td class="td-right">Endpoint para actualizar datos de un técnico en la base de datos</td>
+                </tr>
+                <tr>
+                    <td class="title">Verbo HTTP: </td>
+                    <td class="td-right">PUT</td>
+                </tr>
+                <tr>
+                    <td class="title">Header: </td>
+                    <td class="td-right">Content-Type: JSON</td>
+                </tr>
+                <tr>
+                    <td class="title">Usuarios: </td>
+                    <td class="td-right">Administrador, Encargado</td>
+                </tr>
+                <tr>
+                    <td class="title">Request JSON: </td>
+                    <td class="td-right">
+                        {
+                            "identificacion": "123456789",
+                            "nombres": "Juan",
+                            "apellidos": "Perez",
+                            "correo": "juanperez@example.com",
+                            "telefono": "1234567890"
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">Response: </td>
+                    <td class="td-right">
+                       <li>
+                        <span>Correcto:</span> <br> <br>
+                        status: 200 <br><br>
+                       Body: <br>
+                       {
+                            "message": "Técnico actualizado exitosamente"
+                       }
+                      <br> <br>
+                       </li>
+                      <li>
+                        <span>Incorrecto:</span> <br><br>
+                        status: 403 <br><br>
+                        Body: <br>
+                        {
+                            "message": "No se actualizó el técnico"
+                        }
+                      </li>
+                    </td>
+                </tr>
+            </table>
+        </div>
+       </div>
+    </div>
+   </div>
+   </div>
+</body>
+</html>
