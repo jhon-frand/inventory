@@ -112,6 +112,7 @@ function CategoriasTemplate() {
         try {
             const respuesta = await axios.get(`${endpoint}/${searchId}`);
            console.log(respuesta);
+           alert(respuesta.data.nombre_categoria);
         } catch (error) {
             console.log("error al buscar categoría", error);
         }

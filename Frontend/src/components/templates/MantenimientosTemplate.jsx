@@ -75,8 +75,8 @@ function MantenimientosTemplate() {
                                 <th className="p-1 font-normal">{mantenimiento.fecha_realizacion_mantenimiento}</th>
                                 <th className="p-1 font-normal">{mantenimiento.descripcion}</th>
                                 <th className="p-1 font-normal">{mantenimiento.resultado}</th>
-                                <th className="p-1 font-normal">{mantenimiento.fk_user_responsable}</th>
-                                <th className="p-1 font-normal">{mantenimiento.fk_equipo}</th>
+                                <th className="p-1 font-normal">{mantenimiento.nombres}</th>
+                                <th className="p-1 font-normal">{mantenimiento.nombre_equipo}</th>
                                 <th className="p-1 font-normal">
                                 <button className='bg-blue-500 font-normal w-20 p-1 text-white rounded-md'
                                 

@@ -19,7 +19,7 @@ const getMantenimientos = async (peticion, respuesta) => {
         FROM mantenimientos
         JOIN usuarios ON usuarios.id_usuario = mantenimientos.fk_user_responsable
         JOIN equipos ON equipos.id_equipo = mantenimientos.fk_equipo`);
-        respuesta.json({message:"mantenimientos listado: ", manteni: sql});
+        respuesta.json(sql);
     } catch (error) {
         respuesta.status(500);
         respuesta.send(error.message);

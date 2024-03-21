@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 11-03-2024 a las 16:26:17
+-- Tiempo de generación: 17-03-2024 a las 21:34:13
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -51,9 +51,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'frand'),
-(2, 'ssss'),
-(22, 'wesdfsd');
+(22, 'Maquinaria'),
+(30, 'laboratorio');
 
 -- --------------------------------------------------------
 
@@ -80,9 +79,8 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `serial`, `nombre_equipo`, `marca_equipo`, `modelo_equipo`, `fecha_ingreso`, `descripcion`, `tipo_equipo`, `estado`, `fk_categoria`, `fk_ubicacion`) VALUES
-(1, 444, 'q', 'q', 'q', '2022-02-12', 'q', 'q', 'activo', 1, 2),
-(2, 12345, 'Molino Trit', 'SUMER', '2023', '2021-11-13', 'Molino triturador de cárnicos', 'manual', 'activo', 2, 1),
-(19, 11, 'ww', 'ww', 'ww', '2023-12-07', 'ww', 'ww', 'mantenimiento', 2, 1);
+(19, 111, 'Molino', 'MJK', '20LT5', '2024-03-14', 'Molino carnes rojas', 'eléctrico', 'inactivo', 22, 8),
+(20, 123, 'microscopio', 'a', 'a', '2024-03-13', 'a', 'a', 'activo', 30, 11);
 
 -- --------------------------------------------------------
 
@@ -144,10 +142,8 @@ CREATE TABLE `ubicaciones` (
 --
 
 INSERT INTO `ubicaciones` (`id_ubicacion`, `fk_unidad_productiva`, `ambiente`, `sitio`) VALUES
-(1, 3, 'f-2', 'Mesón'),
-(2, 2, 'A-13', 'Mesa 2'),
-(3, 2, 'Y-13', 'Mesa 5'),
-(8, 1, 'y-23', 'mesa 4');
+(8, 2, 'H-13', 'mesa 2'),
+(11, 3, 'A-1', 'Piso');
 
 -- --------------------------------------------------------
 
@@ -165,7 +161,6 @@ CREATE TABLE `unidades_productivas` (
 --
 
 INSERT INTO `unidades_productivas` (`id_unidad`, `nombre_unidad`) VALUES
-(1, 'Escuela del Café'),
 (2, 'Gastronomía'),
 (3, 'Agroindustria');
 
@@ -268,13 +263,13 @@ ALTER TABLE `actividades`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_equipo` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimientos`
@@ -298,13 +293,13 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `ubicaciones`
 --
 ALTER TABLE `ubicaciones`
-  MODIFY `id_ubicacion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ubicacion` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `unidades_productivas`
 --
 ALTER TABLE `unidades_productivas`
-  MODIFY `id_unidad` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_unidad` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
