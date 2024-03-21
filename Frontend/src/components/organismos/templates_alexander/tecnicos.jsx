@@ -295,55 +295,55 @@ function Tecnicos() {
   <form onSubmit={handleForm} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
     <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
       <div className="flex w-full border-b-2">
-        <h2 className="p-1 font-semibold">REGISTRAR NUEVA ACTIVIDAD</h2>
+        <h2 className="p-1 font-semibold">REGISTRO DE TECNICO</h2>
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <label className='font-medium'>ID:</label>
+        <label className='font-medium'>Identificacion:</label>
         <input
           type="text"
-          name="id_actividad"
+          name="identificacion"
           className='border-gray-400 border outline-none rounded-3xl-sm p-1'
-          value={values.id_actividad}
+          value={values.identificacion}
           onChange={handleInputChange}
         />
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <label className='font-medium'>Realización:</label>
+        <label className='font-medium'>Nombres:</label>
         <input
-          type="date"
-          name="fecha_realizacion_actividad"
+          type="text"
+          name="nombres"
           className='border-gray-400 border outline-none rounded-3xl-sm p-1'
-          value={values.fecha_realizacion_actividad}
+          value={values.nombres}
           onChange={handleInputChange}
         />
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <label className='font-medium'>Descripción:</label>
+        <label className='font-medium'>Apellidos:</label>
         <input
           type="text"
-          name="descripcion"
+          name="apellidos"
           className='border-gray-400 border outline-none rounded-3xl-sm p-1'
-          value={values.descripcion}
+          value={values.apellidos}
           onChange={handleInputChange}
         />
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <label className='font-medium'>Mantenimiento:</label>
+        <label className='font-medium'>Correo:</label>
         <input
-          type="text"
-          name="fk_mantenimiento"
+          type="email"
+          name="correo"
           className='border-gray-400 border outline-none rounded-3xl-sm p-1'
-          value={values.fk_mantenimiento}
+          value={values.correo}
           onChange={handleInputChange}
         />
       </div>
       <div className='flex justify-center items-center gap-2'>
-        <label className='font-medium'>Técnico:</label>
+        <label className='font-medium'>Telefono:</label>
         <input
           type="text"
-          name="fk_tecnico"
+          name="telefono"
           className='border-gray-400 border outline-none rounded-3xl-sm p-1'
-          value={values.fk_tecnico}
+          value={values.telefono}
           onChange={handleInputChange}
         />
       </div>
