@@ -282,7 +282,7 @@ function Actividades() {
       <form onSubmit={handleForm} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
           <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
               <div className="flex w-full border-b-2">
-                  <h2 className="p-1 font-semibold">REGISTRAR NUEVA ACTIVIDAD</h2>
+                  <h2 className="p-1 font-semibold">REGISTRO DE ACTIVIDAD</h2>
               </div>
               <div className='flex justify-center items-center gap-2'>
                   <label className='font-medium'>ID:</label>
@@ -352,7 +352,7 @@ function Actividades() {
       <form onSubmit={(event) => handleFormActualizar(event, values.id_actividad)} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
           <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
               <div className="flex w-full border-b-2">
-                  <h2 className="p-1 font-semibold">EDITAR DATOS DE CATEGORÍA</h2>
+                  <h2 className="p-1 font-semibold">EDITAR ACTIVIDAD</h2>
               </div>
               <div className='flex justify-center items-center gap-2'>
                   <label className='font-medium'>ID:</label>

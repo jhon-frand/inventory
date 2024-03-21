@@ -366,7 +366,7 @@ function Tecnicos() {
   <form onSubmit={(event) => handleFormActualizar(event, values.id_tecnico)} className='fixed inset-0 flex bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center'>
     <div className='bg-white p-5 rounded-3xl-md flex flex-col justify-center items-center gap-5'>
       <div className="flex w-full border-b-2">
-        <h2 className="p-1 font-semibold">EDITAR DATOS DE CATEGORÍA</h2>
+        <h2 className="p-1 font-semibold">EDITAR TECNICO</h2>
       </div>
       <div className='flex justify-center items-center gap-2'>
         <label className='font-medium'>Identificación:</label>
